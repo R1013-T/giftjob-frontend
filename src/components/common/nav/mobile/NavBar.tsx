@@ -23,7 +23,7 @@ const MobileNavBar = () => {
       }  `}
     >
       <div
-        className="absolute border bg-card right-2/4 translate-x-1/2 rounded-full -top-3 text-character w-6 h-6 p-0.5"
+        className="absolute border bg-card right-2/4 translate-x-1/2 rounded-full -top-4 text-character w-6 h-6 p-0.5"
         onClick={() => {
           setIsMini((prev) => !prev)
         }}

@@ -5,11 +5,6 @@ export default function MainLayout({
 }: {
   children: React.ReactNode
 }) {
-  if (typeof window !== 'undefined') {
-    console.log(window.screen.width)
-  } else {
-    console.log('window is undefined')
-  }
 
   return (
     <div className="flex h-screen">

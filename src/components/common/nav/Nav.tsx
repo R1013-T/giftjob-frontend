@@ -1,21 +1,19 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-import { useIsPcStore, useWindowSizeStore } from '@/app/store/common'
 import MobileNavBar from '@/components/common/nav/mobile/NavBar'
 import PcNavBar from '@/components/common/nav/pc/NavBar'
-import { useGetWindowSize } from '@/hooks/common/GetWindowSize'
 
 const Nav = () => {
-  const windowSize = useWindowSizeStore((state) => state.windowSize)
-  const isPc = useIsPcStore((state) => state.isPc)
-  useGetWindowSize()
+  const [isPc, setIsPc] = useState(true)
 
   useEffect(() => {
-    console.log(windowSize)
-    console.log(isPc)
-  }, [windowSize])
+    setIsPc(window.innerWidth > 900)
+    window.addEventListener('resize', () => {
+      setIsPc(window.innerWidth > 900)
+    })
+  }, [])
 
   return <nav>{isPc ? <PcNavBar /> : <MobileNavBar />}</nav>
 }
