@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
+import Hamburger from '@/components/common/nav/mobile/hamburger/Hamburger'
 import MobileNavBar from '@/components/common/nav/mobile/NavBar'
 import PcNavBar from '@/components/common/nav/pc/NavBar'
 
@@ -15,7 +16,12 @@ const Nav = () => {
     })
   }, [])
 
-  return <nav>{isPc ? <PcNavBar /> : <MobileNavBar />}</nav>
+  return (
+    <>
+      <nav>{isPc ? <PcNavBar /> : <MobileNavBar />}</nav>
+      {!isPc && <Hamburger />}
+    </>
+  )
 }
 
 export default Nav
