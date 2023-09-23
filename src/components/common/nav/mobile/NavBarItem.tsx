@@ -30,7 +30,7 @@ const NavBarItem = (props: NavIconProps) => {
       onClick={() => handelChangePage()}
     >
       <props.icon
-        className={`w-9 h-9 p-1.5 rounded-full ${
+        className={`w-10 h-10 p-1.5 rounded-full ${
           isCurrentPage ? 'bg-primary/10' : ''
         }`}
       />

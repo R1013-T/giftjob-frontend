@@ -12,12 +12,14 @@ const NavItem = (props: Props) => {
   const router = useRouter()
   const pathname = usePathname()
 
-  const isCurrentPage =
+  let isCurrentPage =
     pathname.match(/\/main\/(.*)/)?.[1] === props.text.toLowerCase()
+  isCurrentPage =
+    pathname == '/main' && props.text == 'Dashboard' ? true : isCurrentPage
 
   const handleClick = () => {
     if (props.link) {
-      // router.push(props.link)
+      router.push(props.link)
     } else if (props.func) {
       props.func()
     }
@@ -25,14 +27,12 @@ const NavItem = (props: Props) => {
 
   return (
     <div
-      className="text-character flex justify-start items-center"
+      className={`flex justify-start items-center cursor-pointer rounded-l-md ${
+        isCurrentPage ? 'text-primary bg-primary/10' : 'text-character'
+      }`}
       onClick={handleClick}
     >
-      <props.icon
-        className={`w-10 h-10 p-2 rounded-full ${
-          isCurrentPage ? 'bg-primary/10' : ''
-        }`}
-      />
+      <props.icon className="w-10 h-10 p-2" />
       {props.isMini ? null : <p className="text-base ml-1">{props.text}</p>}
     </div>
   )
