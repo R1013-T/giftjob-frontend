@@ -20,7 +20,7 @@ const PcNavBar = () => {
 
   return (
     <div
-      className={`h-screen relative border border-l bg-card flex flex-col justify-between ${isMini ? 'w-16' : 'w-44'}`}>
+      className={`h-screen relative border border-l flex flex-col justify-between ${isMini ? 'w-16' : 'w-44'}`}>
       <div
         className='absolute top-5 -right-2.5 p-0.5 h-5 w-5 text-character z-10 bg-card border rounded-full'
         onClick={() => setIsMini(!isMini)}
