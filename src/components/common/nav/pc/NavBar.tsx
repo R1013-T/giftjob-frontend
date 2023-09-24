@@ -10,6 +10,7 @@ import {
   UserGroupIcon
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import { signOut } from 'next-auth/react'
 import { useState } from 'react'
 
 import NavItem from '@/components/common/nav/NavItem'
@@ -65,7 +66,7 @@ const PcNavBar = () => {
           icon={ArrowLeftOnRectangleIcon}
           text='SignOut'
           func={() => {
-            console.log('SignOut')
+            signOut()
           }}
           isMini={isMini}
         />

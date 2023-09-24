@@ -3,6 +3,7 @@ import {
   ChatBubbleLeftRightIcon,
   Cog6ToothIcon,
 } from '@heroicons/react/24/outline'
+import { signOut } from 'next-auth/react'
 
 import NavItem from '@/components/common/nav/NavItem'
 import UserCard from '@/components/user/UserCard'
@@ -16,7 +17,7 @@ const HamburgerDesc = () => {
         icon={ArrowLeftOnRectangleIcon}
         text="SignOut"
         func={() => {
-          console.log('SignOut')
+          signOut()
         }}
       />
       <NavItem
