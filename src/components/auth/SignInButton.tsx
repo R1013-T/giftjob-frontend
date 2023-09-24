@@ -25,7 +25,7 @@ const OAuthButton = (props:OAuthButtonProps) => {
       onClick={() => signIn(props.provider, { callbackUrl: '/main' })}
     >
       <Image src={`/OAuth/${props.provider}.png`} alt="" width={25} height={25} />
-      <p>Continue in with <span className='text-title font-bold' >{props.name}</span></p>
+      <p>Continue with <span className='text-title font-bold' >{props.name}</span></p>
       <div></div>
     </Button>
   )
@@ -36,7 +36,7 @@ export default function SignInButton() {
   return (
     <Dialog>
       <DialogTrigger>
-        <Button>Get started</Button>
+        <Button>Get Started</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
