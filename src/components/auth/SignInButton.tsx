@@ -41,7 +41,7 @@ export default function SignInButton() {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            <p className='mb-4' >Get started</p>
+            <p className='mb-4' >Get started to GiftJob</p>
           </DialogTitle>
           <DialogDescription className='flex flex-col gap-3' >
             <OAuthButton provider="google" name="Google" />
