@@ -66,9 +66,8 @@
   }
 }
 
-body {
-  border-top-right-radius: 100%;
-  border-top-left-radius: 100%;
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @layer base {

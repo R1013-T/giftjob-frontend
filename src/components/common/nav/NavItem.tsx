@@ -33,7 +33,7 @@ const NavItem = (props: Props) => {
         }`}
         onClick={handleClick}
       >
-       <props.icon className="w-10 h-10 p-2" />
+        <props.icon className="w-10 h-10 p-2" />
       </div>
     )
   }

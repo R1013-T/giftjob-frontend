@@ -1,3 +1,5 @@
+import { NextAuthProvider } from '@/utils/NextAuthProvider'
+
 export default function Main() {
   return (
     <div>

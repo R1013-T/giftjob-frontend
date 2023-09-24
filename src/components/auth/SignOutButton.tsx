@@ -9,7 +9,5 @@ export default function SignOutButton() {
     signOut()
   }
 
-  return (
-    <Button onClick={handleSignIn} >Sign Out</Button>
-  )
+  return <Button onClick={handleSignIn}>Sign Out</Button>
 }
