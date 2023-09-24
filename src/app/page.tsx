@@ -1,12 +1,16 @@
 import Link from 'next/link'
 
-export default function Home() {
+import SignOutButton from '@/components/auth/SignOutButton'
+import Header from '@/components/common/header/Header'
+
+export default async function Home() {
   return (
     <main>
-      <h1>GiftJob Landing Page</h1>
+      <Header />
       <Link className="m-10" href="./main">
         link
       </Link>
+      <SignOutButton />
     </main>
   )
 }
