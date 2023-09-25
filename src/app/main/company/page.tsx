@@ -1,3 +1,7 @@
 export default function Company() {
-  return <p>Company</p>
+  return (
+    <div>
+      <h1>Company</h1>
+    </div>
+  )
 }
