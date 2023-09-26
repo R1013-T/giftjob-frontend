@@ -24,7 +24,7 @@ const NavBarItem = (props: NavIconProps) => {
 
   return (
     <div
-      className={`flex flex-col items-center ${
+      className={`flex flex-col items-center rounded-full ${
         isCurrentPage ? 'text-primary' : 'text-character'
       }`}
       onClick={() => handelChangePage()}
