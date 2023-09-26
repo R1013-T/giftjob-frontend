@@ -17,10 +17,10 @@ const Nav = () => {
   }, [])
 
   return (
-    <>
+    <aside className='h-full'>
       <nav>{isPc ? <PcNavBar /> : <MobileNavBar />}</nav>
       {!isPc && <Hamburger />}
-    </>
+    </aside>
   )
 }
 
