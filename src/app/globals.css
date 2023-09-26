@@ -66,6 +66,10 @@
   }
 }
 
+body {
+  background-color: hsl(var(--background));
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }

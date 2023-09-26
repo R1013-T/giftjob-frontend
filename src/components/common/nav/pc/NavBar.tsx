@@ -9,7 +9,7 @@ import {
   DocumentTextIcon,
   HomeIcon,
   PresentationChartLineIcon,
-  UserGroupIcon,
+  UserGroupIcon
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { signOut } from 'next-auth/react'
@@ -28,66 +28,67 @@ const PcNavBar = () => {
       }`}
     >
       <div
-        className="absolute top-5 -right-2.5 p-0.5 h-5 w-5 text-character z-10 bg-card border rounded-full"
+        className='absolute top-5 -right-2.5 p-0.5 h-5 w-5 text-character z-10 bg-card border rounded-full'
         onClick={() => setIsMini(!isMini)}
       >
         {isMini ? <ChevronRightIcon /> : <ChevronLeftIcon />}
       </div>
-      <div className="mt-3">
+      <div className='mt-3'>
         {isMini ? (
-          <Image
-            src="/giftjob_icon.svg"
-            alt="giftjob"
-            width={40}
-            height={40}
-            className="mx-auto"
-          />
-        ) : (
-          <div className="flex justify-between items-end mx-3">
+          <div className='mx-auto grid place-items-center'>
             <Image
-              src="/giftjob_logo.svg"
-              alt="giftjob"
+              src='/giftjob_icon.svg'
+              alt='giftjob'
+              width={40}
+              height={40}
+            />
+          </div>
+        ) : (
+          <div className='flex justify-between items-end mx-3'>
+            <Image
+              src='/giftjob_logo.svg'
+              alt='giftjob'
               width={140}
               height={40}
             />
-            <p className="text-xs text-character">v1.0</p>
+            <p className='text-xs text-character'>v1.0</p>
           </div>
         )}
         <div className={`mt-3 ${!isMini && 'ml-2'}`}>
           <NavItem
             icon={HomeIcon}
-            text="Dashboard"
-            link="/main"
+            text='Dashboard'
+            link='/main'
             isMini={isMini}
           />
           <NavItem
             icon={BuildingOfficeIcon}
-            text="Company"
-            link="/main/company"
+            text='Company'
+            link='/main/company'
             isMini={isMini}
           />
           <NavItem
             icon={UserGroupIcon}
-            text="People"
-            link="/main/people"
+            text='People'
+            link='/main/people'
             isMini={isMini}
           />
           <NavItem
             icon={DocumentTextIcon}
-            text="Note"
-            link="/main/note"
+            text='Note'
+            link='/main/note'
             isMini={isMini}
           />
           <NavItem
             icon={CalendarIcon}
-            text="Calendar"
-            link="/main/calendar"
+            text='Calendar'
+            link='/main/calendar'
             isMini={isMini}
           />
           <NavItem
             icon={PresentationChartLineIcon}
-            text="AI"
-            link="/main/ai"
+            text='AI'
+            link='/main/ai'
             isMini={isMini}
           />
         </div>
@@ -98,7 +99,7 @@ const PcNavBar = () => {
         </div>
         <NavItem
           icon={ArrowLeftOnRectangleIcon}
-          text="SignOut"
+          text='SignOut'
           func={() => {
             signOut()
           }}
@@ -106,7 +107,7 @@ const PcNavBar = () => {
         />
         <NavItem
           icon={Cog6ToothIcon}
-          text="Settings"
+          text='Settings'
           func={() => {
             console.log('setting')
           }}
@@ -114,7 +115,7 @@ const PcNavBar = () => {
         />
         <NavItem
           icon={ChatBubbleLeftRightIcon}
-          text="Support"
+          text='Support'
           func={() => {
             console.log('support')
           }}
