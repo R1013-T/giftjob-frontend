@@ -11,7 +11,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 } from '@/components/ui/dialog'
 
 type OAuthButtonProps = {
@@ -22,19 +22,19 @@ type OAuthButtonProps = {
 const OAuthButton = (props: OAuthButtonProps) => {
   return (
     <Button
-      className='w-full relative mx-auto mt-3 px-3 bg-card text-character border h-12 rounded-md flex justify-between hover:bg-card hover:border-primary'
+      className="w-full relative mx-auto mt-3 px-3 bg-card text-character border h-12 rounded-md flex justify-between hover:bg-card hover:border-primary"
       onClick={() => signIn(props.provider, { callbackUrl: '/main' })}
     >
       <Image
         src={`/OAuth/${props.provider}.png`}
-        alt=''
+        alt=""
         width={25}
         height={25}
       />
       <p>
-        Continue with <span className='text-title font-bold'>{props.name}</span>
+        Continue with <span className="text-title font-bold">{props.name}</span>
       </p>
-      <ArrowRightIcon className='h-6 w-6' />
+      <ArrowRightIcon className="h-6 w-6" />
     </Button>
   )
 }
@@ -42,18 +42,18 @@ const OAuthButton = (props: OAuthButtonProps) => {
 export default function SignInButton() {
   return (
     <Dialog>
-      <DialogTrigger className='bg-primary text-white px-3 py-2 tracking-wide rounded-md text-sm'>
+      <DialogTrigger className="bg-primary text-white px-3 py-2 tracking-wide rounded-md text-sm">
         Get Started
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            <p className='mb-1 ml-2 text-center'>Get started to GiftJob</p>
+            <p className="mb-1 ml-2 text-center">Get started to GiftJob</p>
           </DialogTitle>
           <DialogDescription>
-              <OAuthButton provider={'microsoft'} name={'Microsoft'} />
-              <OAuthButton provider={'google'} name={'Google'} />
-              <OAuthButton provider={'github'} name={'GitHub'} />
+            <OAuthButton provider={'microsoft'} name={'Microsoft'} />
+            <OAuthButton provider={'google'} name={'Google'} />
+            <OAuthButton provider={'github'} name={'GitHub'} />
           </DialogDescription>
         </DialogHeader>
       </DialogContent>

@@ -1,5 +1,3 @@
 export default function MainHeader() {
-  return (
-    <p>MainHeader</p>
-  )
+  return <p>MainHeader</p>
 }

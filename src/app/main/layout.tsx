@@ -1,16 +1,18 @@
+import MainHeader from '@/components/common/header/main/MainHeader'
 import Nav from '@/components/common/nav/Nav'
 import { NextAuthProvider } from '@/utils/NextAuthProvider'
 
 export default function MainLayout({
-                                     children
-                                   }: {
+  children,
+}: {
   children: React.ReactNode
 }) {
   return (
     <NextAuthProvider>
-      <div className='flex h-dvh overflow-hidden'>
+      <div className="flex h-dvh overflow-hidden">
+        <MainHeader />
         <Nav />
-        <main className='w-full h-full'>{children}</main>
+        <main className="w-full h-full">{children}</main>
       </div>
     </NextAuthProvider>
   )

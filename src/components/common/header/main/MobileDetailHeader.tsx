@@ -1,7 +1,3 @@
 export default function MobileDetailHeader() {
-  return (
-    <header>
-
-    </header>
-  )
+  return <header></header>
 }
