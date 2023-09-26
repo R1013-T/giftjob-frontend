@@ -7,7 +7,6 @@ export default function CalendarLayout({
 }) {
   return (
     <div>
-      <DetailController />
       {children}
     </div>
   )
