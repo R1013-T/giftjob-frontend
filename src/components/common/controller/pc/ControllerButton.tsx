@@ -2,7 +2,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 } from '@/components/ui/tooltip'
 
 type Props = {
@@ -24,14 +24,14 @@ export default function PcControllerButton(props: Props) {
           }
           onClick={props.handleClick}
         >
-          <props.icon className='w-5 h-5' />
-          {props.primary && <p className='text-sm ml-1'>{props.name}</p>}
+          <props.icon className="w-5 h-5" />
+          {props.primary && <p className="text-sm ml-1">{props.name}</p>}
         </TooltipTrigger>
-        {!props.primary &&
+        {!props.primary && (
           <TooltipContent>
             <p>{props.name}</p>
           </TooltipContent>
-        }
+        )}
       </Tooltip>
     </TooltipProvider>
   )

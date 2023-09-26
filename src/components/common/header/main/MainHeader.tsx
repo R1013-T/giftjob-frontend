@@ -16,7 +16,9 @@ export default function MainHeader() {
   const sessionUser = session?.sessionUser as SessionUser
   const pathname = usePathname()
 
-  const capitalizeCurrentPage = capitalizeFirstLetter(pathname.match(/\/main\/(.*)/)?.[1] ?? '')
+  const capitalizeCurrentPage = capitalizeFirstLetter(
+    pathname.match(/\/main\/(.*)/)?.[1] ?? ''
+  )
 
   let headerTitle = ''
   if (pathname === '/main') {
@@ -32,8 +34,12 @@ export default function MainHeader() {
   }
 
   return (
-    <header className='w-full border-b'>
-      {isPc ? <PcDetailHeader headerTitle={headerTitle} /> : <MobileDetailHeader headerTitle={headerTitle} />}
+    <header className="w-full border-b">
+      {isPc ? (
+        <PcDetailHeader headerTitle={headerTitle} />
+      ) : (
+        <MobileDetailHeader headerTitle={headerTitle} />
+      )}
     </header>
   )
 }

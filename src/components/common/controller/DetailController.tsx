@@ -24,26 +24,44 @@ export default function DetailController() {
 
   const isPc = useIsPcStore((state) => state.isPc)
 
-  const buttonConfigs:ControllerButton[] = [
-    {name:"Reload",icon: ArrowPathIcon, action: () => console.log(`${currentPage} reload`)},
-    {name:"Sort",icon: BarsArrowDownIcon, action: () => console.log(`${currentPage} sort`)},
-    {name:"Filter",icon: FunnelIcon, action: () => console.log(`${currentPage} filter`)},
-    {name:`Add ${capitalizeFirstLetter(currentPage)}`,icon: PlusIcon, action: () => console.log(`add ${currentPage}`), primary: true},
+  const buttonConfigs: ControllerButton[] = [
+    {
+      name: 'Reload',
+      icon: ArrowPathIcon,
+      action: () => console.log(`${currentPage} reload`),
+    },
+    {
+      name: 'Sort',
+      icon: BarsArrowDownIcon,
+      action: () => console.log(`${currentPage} sort`),
+    },
+    {
+      name: 'Filter',
+      icon: FunnelIcon,
+      action: () => console.log(`${currentPage} filter`),
+    },
+    {
+      name: `Add ${capitalizeFirstLetter(currentPage)}`,
+      icon: PlusIcon,
+      action: () => console.log(`add ${currentPage}`),
+      primary: true,
+    },
   ]
 
-  if (isPc) return (
-    <PcControllerWrapper>
-      {buttonConfigs.map((config, index) => (
-        <PcControllerButton
-          key={index}
-          name={config.name}
-          icon={config.icon}
-          handleClick={config.action}
-          primary={config.primary}
-        />
-      ))}
-    </PcControllerWrapper>
-  )
+  if (isPc)
+    return (
+      <PcControllerWrapper>
+        {buttonConfigs.map((config, index) => (
+          <PcControllerButton
+            key={index}
+            name={config.name}
+            icon={config.icon}
+            handleClick={config.action}
+            primary={config.primary}
+          />
+        ))}
+      </PcControllerWrapper>
+    )
 
   return (
     <MobileControllerWrapper>

@@ -1,4 +1,6 @@
-export default function PcControllerWrapper({children}: {
+export default function PcControllerWrapper({
+  children,
+}: {
   children: React.ReactNode
 }) {
   return (
