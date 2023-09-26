@@ -12,6 +12,7 @@ const Nav = () => {
   const isPc = useIsPcStore((state) => state.isPc)
 
   useEffect(() => {
+    setIsPc(window.innerWidth > 900)
     window.addEventListener('resize', () => {
       setIsPc(window.innerWidth > 900)
     })

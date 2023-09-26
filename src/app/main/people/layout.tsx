@@ -1,6 +1,6 @@
 import DetailController from '@/components/common/controller/DetailController'
 
-export default function CompanyLayout({
+export default function PeopleLayout({
   children,
 }: {
   children: React.ReactNode
