@@ -6,7 +6,7 @@ import {
   FunnelIcon,
   PlusIcon,
 } from '@heroicons/react/24/outline'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import MobileControllerButton from '@/components/common/controller/mobile/ControllerButton'
 import MobileControllerWrapper from '@/components/common/controller/mobile/ControllerWrapper'
@@ -18,6 +18,8 @@ import capitalizeFirstLetter from '@/utils/common/capitalizeFirstLetter'
 
 export default function DetailController() {
   const pathname = usePathname()
+  const router = useRouter()
+
   const currentPage = pathname.split('/')[2]
 
   const isPc = useIsPcStore((state) => state.isPc)
@@ -26,22 +28,22 @@ export default function DetailController() {
     {
       name: 'Reload',
       icon: ArrowPathIcon,
-      action: () => console.log(`${currentPage} reload`),
+      action: () => router.refresh(),
     },
     {
       name: 'Sort',
       icon: BarsArrowDownIcon,
-      action: () => console.log(`${currentPage} sort`),
+      action: () => router.push(`${pathname}?modal=sort`),
     },
     {
       name: 'Filter',
       icon: FunnelIcon,
-      action: () => console.log(`${currentPage} filter`),
+      action: () => router.push(`${pathname}?modal=filter`),
     },
     {
       name: `Add ${capitalizeFirstLetter(currentPage)}`,
       icon: PlusIcon,
-      action: () => console.log(`add ${currentPage}`),
+      action: () => router.push(`${pathname}?modal=add`),
       primary: true,
     },
   ]
