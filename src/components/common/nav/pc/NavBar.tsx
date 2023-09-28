@@ -28,7 +28,7 @@ const PcNavBar = () => {
       }`}
     >
       <div
-        className="absolute top-5 -right-2.5 p-0.5 h-5 w-5 text-character z-10 bg-card border rounded-full"
+        className="absolute top-5 -right-2.5 p-0.5 h-5 w-5 text-character z-10 bg-card border rounded-full cursor-pointer"
         onClick={() => setIsMini(!isMini)}
       >
         {isMini ? <ChevronRightIcon /> : <ChevronLeftIcon />}
