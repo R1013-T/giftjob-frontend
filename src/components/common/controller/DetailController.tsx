@@ -20,8 +20,6 @@ export default function DetailController() {
   const pathname = usePathname()
   const currentPage = pathname.split('/')[2]
 
-  console.log(currentPage)
-
   const isPc = useIsPcStore((state) => state.isPc)
 
   const buttonConfigs: ControllerButton[] = [

@@ -8,7 +8,9 @@ export default function DashboardCalendar() {
   return (
     <section className="mb-2 border rounded-md bg-card">
       {isPc ? (
-        <div className="h-32">pc calendar</div>
+        <div className="h-32">
+          <p>pc calendar</p>
+        </div>
       ) : (
         <div className="min-h-[100px]">
           <p>mobile calendar</p>
