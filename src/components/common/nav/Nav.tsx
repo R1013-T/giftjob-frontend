@@ -16,7 +16,7 @@ const Nav = () => {
     window.addEventListener('resize', () => {
       setIsPc(window.innerWidth > 900)
     })
-  }, )
+  })
 
   return (
     <aside className="h-full">

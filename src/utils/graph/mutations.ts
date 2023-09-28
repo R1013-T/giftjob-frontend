@@ -14,6 +14,7 @@ export const SIGN_IN_MUTATION = gql`
 export const CREATE_COMPANY = gql`
   mutation CreateCompany($input: CreateCompanyInput!) {
     createCompany(input: $input) {
+      id
       name
       tell
       email
@@ -25,6 +26,8 @@ export const CREATE_COMPANY = gql`
       pinned_at
       is_trash
       user_id
+      created_at
+      updated_at
     }
   }
 `
