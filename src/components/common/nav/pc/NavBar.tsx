@@ -94,7 +94,7 @@ const PcNavBar = () => {
         </div>
       </div>
       <div className={`mb-3 ${!isMini && 'ml-2'}`}>
-        <div className={!isMini ? 'mr-2' : ''}>
+        <div className={`${!isMini ? 'mr-2' : ''} mb-3`}>
           <UserCard isMini={isMini} />
         </div>
         <NavItem

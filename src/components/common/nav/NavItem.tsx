@@ -40,8 +40,10 @@ const NavItem = (props: Props) => {
 
   return (
     <div
-      className={`flex justify-start items-center cursor-pointer rounded-l-md ${
-        isCurrentPage ? 'text-primary bg-primary/10' : 'text-character'
+      className={`flex justify-start items-center cursor-pointer rounded-l-md transition-all ${
+        isCurrentPage
+          ? 'text-primary bg-primary/10'
+          : 'text-character hover:bg-character/10'
       }`}
       onClick={handleClick}
     >

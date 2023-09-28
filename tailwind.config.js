@@ -18,6 +18,7 @@ module.exports = {
     extend: {
       height: {
         dvh: '100dvh',
+        DashboardContent: 'calc(100vh - 210px)',
       },
       colors: {
         border: 'hsl(var(--border))',
