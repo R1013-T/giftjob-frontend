@@ -15,9 +15,15 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    maxHeight: {
+      dvh: '100dvh',
+      90: '90dvh',
+      70: '70dvh',
+    },
     extend: {
       height: {
         dvh: '100dvh',
+        70: '70dvh',
         DashboardContent: 'calc(100vh - 210px)',
       },
       colors: {

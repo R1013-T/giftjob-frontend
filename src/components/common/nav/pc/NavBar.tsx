@@ -108,9 +108,7 @@ const PcNavBar = () => {
         <NavItem
           icon={Cog6ToothIcon}
           text="Settings"
-          func={() => {
-            console.log('setting')
-          }}
+          link="/main/settings"
           isMini={isMini}
         />
         <NavItem

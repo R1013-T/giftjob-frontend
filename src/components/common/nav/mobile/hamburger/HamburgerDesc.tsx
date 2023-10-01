@@ -20,13 +20,7 @@ const HamburgerDesc = () => {
           signOut()
         }}
       />
-      <NavItem
-        icon={Cog6ToothIcon}
-        text="Settings"
-        func={() => {
-          console.log('setting')
-        }}
-      />
+      <NavItem icon={Cog6ToothIcon} text="Settings" link="/main/settings" />
       <NavItem
         icon={ChatBubbleLeftRightIcon}
         text="Support"

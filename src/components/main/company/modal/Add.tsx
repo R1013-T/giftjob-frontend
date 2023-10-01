@@ -1,5 +1,6 @@
 import { usePathname, useRouter } from 'next/navigation'
 
+import AddInner from '@/components/main/company/modal/modalContent/add/AddInner'
 import {
   Dialog,
   DialogContent,
@@ -19,8 +20,10 @@ export default function CompanyAddModal(props: Props) {
     <Dialog open={props.isOpen} onOpenChange={props.setIsOpen}>
       <DialogContent onCloseAutoFocus={() => router.back()}>
         <DialogHeader>
-          <DialogTitle>Company People</DialogTitle>
-          <DialogDescription>Company add modal</DialogDescription>
+          <DialogTitle>Add Company</DialogTitle>
+          <DialogDescription>
+            <AddInner setIsOpen={props.setIsOpen} />
+          </DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>

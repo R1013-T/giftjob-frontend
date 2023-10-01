@@ -23,8 +23,6 @@ export default function People() {
 
   return (
     <article>
-      <h1>People</h1>
-      <p>Page Modal: {pageModal}</p>
       <PeopleAddModal isOpen={openAddModal} setIsOpen={setOpenAddModal} />
       <PeopleSortModal isOpen={openSortModal} setIsOpen={setOpenSortModal} />
       <PeopleFilterModal
