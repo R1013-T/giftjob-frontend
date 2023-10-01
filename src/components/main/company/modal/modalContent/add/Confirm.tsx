@@ -69,7 +69,7 @@ export default function Confirm(props: Props) {
           <AlertDescription>{AlertMessage}</AlertDescription>
         </Alert>
       )}
-      <div className="max-h-70 px-1 overflow-y-auto">
+      <div className="max-h-70 px-1 overflow-y-auto text-left">
         <Accordion type="single" defaultValue="general" collapsible>
           <AccordionItem value="general">
             <AccordionTrigger>

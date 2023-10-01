@@ -124,7 +124,7 @@ export default function InputFields(props: Props) {
           </Accordion>
         </div>
         <Button className="w-full tracking-widest" type="submit">
-          Submit
+          Confirm
         </Button>
         <div
           className="flex items-center justify-center cursor-pointer hover:underline"

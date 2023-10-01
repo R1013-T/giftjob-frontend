@@ -70,7 +70,7 @@ export default function SelectTemplate(props: Props) {
   }
 
   return (
-    <div className="relative pb-1">
+    <div className="relative pb-1 text-left">
       <div
         className="absolute -top-8 right-0 flex items-center gap-0.5"
         onClick={handleTemplate}
