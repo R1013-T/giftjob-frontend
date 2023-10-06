@@ -48,7 +48,7 @@ const CompanyItem: React.FC<Props> = ({ company }) => {
         className="w-full text-sm tracking-widest mt-2"
         onClick={() => console.log('Company', company)}
       >
-        View more
+        View More
       </Button>
     </div>
   )
