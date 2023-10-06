@@ -1,4 +1,3 @@
-import { useMutation } from '@apollo/client'
 import {
   ArrowLeftIcon,
   ExclamationCircleIcon,
@@ -16,10 +15,13 @@ import {
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { toast } from '@/components/ui/use-toast'
+import {
+  GetUserCompanyDocument,
+  useCreateCompanyMutation,
+} from '@/lib/gql/graphql'
 import type { CompanyDefaultInfo } from '@/types/company'
 import type { SessionUser } from '@/types/session'
 import formatCapitalizedWords from '@/utils/common/formatCapitalizedWords'
-import { CREATE_COMPANY } from '@/utils/graph/mutations'
 
 type Props = {
   setAddState: (addState: string) => void
@@ -30,7 +32,14 @@ type Props = {
 export default function Confirm(props: Props) {
   const { data: session, status }: any = useSession()
   const sessionUser = session?.sessionUser as SessionUser
-  const [createCompany, { data, loading, error }] = useMutation(CREATE_COMPANY)
+  const [createCompany, { data, loading, error }] = useCreateCompanyMutation({
+    refetchQueries: [
+      {
+        query: GetUserCompanyDocument,
+        variables: { id: sessionUser?.id },
+      },
+    ],
+  })
 
   const [AlertMessage, setAlertMessage] = useState('')
 
@@ -46,7 +55,7 @@ export default function Confirm(props: Props) {
       if (!res.data) return
       toast({
         title: 'Company created successfully 🎉',
-        description: `Company ${res.data.createCompany.name} has been created successfully!`,
+        description: `Company ${res.data.createCompany?.name} has been created successfully!`,
       })
       props.setIsOpen(false)
     })

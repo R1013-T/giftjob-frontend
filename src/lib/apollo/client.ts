@@ -1,5 +1,11 @@
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
+import {
+  ApolloClient,
+  createHttpLink,
+  HttpLink,
+  InMemoryCache,
+} from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
+import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc'
 import { getSession } from 'next-auth/react'
 
 const httpLink = createHttpLink({

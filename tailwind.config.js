@@ -20,11 +20,15 @@ module.exports = {
       90: '90dvh',
       70: '70dvh',
     },
+    minWidth: {
+      200: '200px',
+    },
     extend: {
       height: {
         dvh: '100dvh',
         70: '70dvh',
         DashboardContent: 'calc(100vh - 210px)',
+        MainContent: 'calc(100vh - 49px)',
       },
       colors: {
         border: 'hsl(var(--border))',

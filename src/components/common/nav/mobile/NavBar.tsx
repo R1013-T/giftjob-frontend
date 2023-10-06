@@ -16,7 +16,7 @@ const MobileNavBar = () => {
 
   return (
     <div
-      className={`fixed bg-card border flex gap-4 right-2/4 translate-x-1/2 justify-center ${
+      className={`fixed z-20 shadow-xl bg-card border flex gap-4 right-2/4 translate-x-1/2 justify-center ${
         isMini
           ? 'bottom-2 rounded-full p-1'
           : 'w-full bottom-0 rounded-t-xl py-2'

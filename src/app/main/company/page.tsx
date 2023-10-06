@@ -1,38 +1,18 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
 
-import CrudTest from '@/components/main/company/CrudTest'
-import CompanyAddModal from '@/components/main/company/modal/Add'
-import CompanyFilterModal from '@/components/main/company/modal/Filter'
-import CompanySortModal from '@/components/main/company/modal/Sort'
+import CompanyView from '@/components/main/company/view/CompanyView'
+import MainContentWrapper from '@/components/main/MainContentWrapper'
+import type { SessionUser } from '@/types/session'
 
 export default function Company() {
-  const searchParams = useSearchParams()
-  const pageModal = searchParams.get('modal')
-
-  const [openAddModal, setOpenAddModal] = useState(false)
-  const [openSortModal, setOpenSortModal] = useState(false)
-  const [openFilterModal, setOpenFilterModal] = useState(false)
-
-  useEffect(() => {
-    setOpenAddModal(pageModal === 'add')
-    setOpenSortModal(pageModal === 'sort')
-    setOpenFilterModal(pageModal === 'filter')
-  }, [pageModal])
+  const { data: session, status }: any = useSession()
+  const sessionUser = session?.sessionUser as SessionUser
 
   return (
-    <article>
-      <h1>Company</h1>
-      <CrudTest />
-
-      <CompanyAddModal isOpen={openAddModal} setIsOpen={setOpenAddModal} />
-      <CompanySortModal isOpen={openSortModal} setIsOpen={setOpenSortModal} />
-      <CompanyFilterModal
-        isOpen={openFilterModal}
-        setIsOpen={setOpenFilterModal}
-      />
-    </article>
+    <MainContentWrapper>
+      <CompanyView userId={sessionUser?.id} />
+    </MainContentWrapper>
   )
 }

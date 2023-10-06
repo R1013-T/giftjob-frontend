@@ -1,13 +1,14 @@
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import { usePathname, useRouter } from 'next/navigation'
 
 import AddInner from '@/components/main/company/modal/modalContent/add/AddInner'
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog'
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog'
 
 type Props = {
   isOpen: boolean
@@ -17,15 +18,21 @@ type Props = {
 export default function CompanyAddModal(props: Props) {
   const router = useRouter()
   return (
-    <Dialog open={props.isOpen} onOpenChange={props.setIsOpen}>
-      <DialogContent onCloseAutoFocus={() => router.back()}>
-        <DialogHeader>
-          <DialogTitle>Add Company</DialogTitle>
-          <DialogDescription>
-            <AddInner setIsOpen={props.setIsOpen} />
-          </DialogDescription>
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
+    <AlertDialog open={props.isOpen} onOpenChange={props.setIsOpen}>
+      <AlertDialogContent>
+        <AlertDialogCancel
+          className="absolute top-4 right-6 text-character p-0.5 bg-card border h-auto"
+          onClick={() => {
+            router.back()
+          }}
+        >
+          <XMarkIcon className="w-6 h-6" />
+        </AlertDialogCancel>
+        <AlertDialogTitle>Add Company</AlertDialogTitle>
+        <AlertDialogDescription>
+          <AddInner setIsOpen={props.setIsOpen} />
+        </AlertDialogDescription>
+      </AlertDialogContent>
+    </AlertDialog>
   )
 }
