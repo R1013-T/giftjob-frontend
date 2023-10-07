@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useIsPcStore } from '@/store/common/isPcStore'
 
@@ -9,6 +9,12 @@ export default function MainContentWrapper({
 }) {
   const isPc = useIsPcStore((state) => state.isPc)
   return (
-    <article className={`p-3 h-MainContent overflow-y-auto ${!isPc && 'pb-24'}`}>{children}</article>
+    <article
+      className={`p-3 relative h-MainContent overflow-y-auto ${
+        !isPc && 'pb-24'
+      }`}
+    >
+      {children}
+    </article>
   )
 }

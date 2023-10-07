@@ -2,10 +2,9 @@
 
 import {
   ArrowPathIcon,
-  ArrowUturnLeftIcon,
   BarsArrowDownIcon,
-  PencilSquareIcon,
-  TrashIcon,
+  FunnelIcon,
+  PlusIcon,
 } from '@heroicons/react/24/outline'
 import { usePathname, useRouter } from 'next/navigation'
 
@@ -15,34 +14,36 @@ import PcControllerWrapper from '@/components/common/controller/pc/ContollerWrap
 import PcControllerButton from '@/components/common/controller/pc/ControllerButton'
 import { useIsPcStore } from '@/store/common/isPcStore'
 import type { ControllerButton } from '@/types/controller'
+import capitalizeFirstLetter from '@/utils/common/capitalizeFirstLetter'
 
-export default function DetailController() {
+export default function ViewController() {
   const pathname = usePathname()
   const router = useRouter()
+
+  const currentPage = pathname.split('/')[2]
 
   const isPc = useIsPcStore((state) => state.isPc)
 
   const buttonConfigs: ControllerButton[] = [
-    {
-      name: 'Trash',
-      icon: TrashIcon,
-      action: () => router.push(`${pathname}?modal=trash`),
-      alert: true,
-    },
-    {
-      name: 'Back to List',
-      icon: ArrowUturnLeftIcon,
-      action: () => router.push(`/main/${pathname.split('/')[2]}`),
-    },
     {
       name: 'Reload',
       icon: ArrowPathIcon,
       action: () => router.refresh(),
     },
     {
-      name: 'Edit',
-      icon: PencilSquareIcon,
-      action: () => router.push(`${pathname}?modal=edit`),
+      name: 'Sort',
+      icon: BarsArrowDownIcon,
+      action: () => router.push(`/main/${currentPage}?modal=sort`),
+    },
+    {
+      name: 'Filter',
+      icon: FunnelIcon,
+      action: () => router.push(`/main/${currentPage}?modal=filter`),
+    },
+    {
+      name: `Add ${capitalizeFirstLetter(currentPage)}`,
+      icon: PlusIcon,
+      action: () => router.push(`/main/${currentPage}?modal=add`),
       primary: true,
     },
   ]
@@ -57,7 +58,6 @@ export default function DetailController() {
             icon={config.icon}
             handleClick={config.action}
             primary={config.primary}
-            alert={config.alert}
           />
         ))}
       </PcControllerWrapper>
@@ -71,7 +71,6 @@ export default function DetailController() {
           icon={config.icon}
           handleClick={config.action}
           primary={config.primary}
-          alert={config.alert}
         />
       ))}
     </MobileControllerWrapper>

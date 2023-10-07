@@ -3,4 +3,5 @@ export type ControllerButton = {
   icon: any
   action: () => void
   primary?: boolean
+  alert?: boolean
 }

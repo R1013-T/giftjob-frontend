@@ -11,8 +11,7 @@ const NavBarItem = (props: NavIconProps) => {
   const router = useRouter()
   const pathname = usePathname()
 
-  const isCurrentPage =
-    pathname.match(/\/main\/(.*)/)?.[1] === props.text.toLowerCase()
+  const isCurrentPage = pathname.split('/')[2] === props.text.toLowerCase()
 
   const handelChangePage = () => {
     if (pathname === '/main' || !isCurrentPage) {

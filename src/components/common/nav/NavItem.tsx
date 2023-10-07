@@ -12,8 +12,7 @@ const NavItem = (props: Props) => {
   const router = useRouter()
   const pathname = usePathname()
 
-  let isCurrentPage =
-    pathname.match(/\/main\/(.*)/)?.[1] === props.text.toLowerCase()
+  let isCurrentPage = pathname.split('/')[2] === props.text.toLowerCase()
   isCurrentPage =
     pathname == '/main' && props.text == 'Dashboard' ? true : isCurrentPage
 

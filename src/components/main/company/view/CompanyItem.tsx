@@ -1,5 +1,6 @@
 import { StarIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { StarIcon as StarIconFill } from '@heroicons/react/24/solid'
+import { useRouter } from 'next/navigation'
 
 import TrashAlert from '@/components/common/alert/Trash'
 import { Button } from '@/components/ui/button'
@@ -19,6 +20,7 @@ const ItemField = ({ label, value }: { label: string; value: string }) => {
 }
 
 const CompanyItem: React.FC<Props> = ({ company }) => {
+  const router = useRouter()
   return (
     <div className="border relative rounded-md bg-card p-2.5 text-character">
       <div className="flex gap-2 absolute right-3 top-3">
@@ -46,7 +48,7 @@ const CompanyItem: React.FC<Props> = ({ company }) => {
       <ItemField label="Site url" value={company.site_url || ''} />
       <Button
         className="w-full text-sm tracking-widest mt-2"
-        onClick={() => console.log('Company', company)}
+        onClick={() => router.push(`./company/${company.id}`)}
       >
         View More
       </Button>

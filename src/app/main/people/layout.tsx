@@ -1,4 +1,4 @@
-import DetailController from '@/components/common/controller/DetailController'
+import ViewController from '@/components/common/controller/ViewController'
 
 export default function PeopleLayout({
   children,
@@ -7,7 +7,7 @@ export default function PeopleLayout({
 }) {
   return (
     <div>
-      <DetailController />
+      <ViewController />
       {children}
     </div>
   )

@@ -30,7 +30,7 @@ export default function MainHeader() {
   } else if (pathname === '/main/ai') {
     headerTitle = 'AI JobHunting Management'
   } else {
-    headerTitle = capitalizeCurrentPage
+    headerTitle = capitalizeCurrentPage.split('/')[0]
   }
 
   return (

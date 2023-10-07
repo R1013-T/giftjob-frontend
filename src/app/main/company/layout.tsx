@@ -1,4 +1,4 @@
-import DetailController from '@/components/common/controller/DetailController'
+import ViewController from '@/components/common/controller/ViewController'
 import CompanyModal from '@/components/main/company/modal/CompanyModal'
 
 export default function CompanyLayout({
@@ -8,7 +8,6 @@ export default function CompanyLayout({
 }) {
   return (
     <div>
-      <DetailController />
       <CompanyModal />
       {children}
     </div>

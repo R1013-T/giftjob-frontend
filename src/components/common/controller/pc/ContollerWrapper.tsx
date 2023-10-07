@@ -4,7 +4,7 @@ export default function PcControllerWrapper({
   children: React.ReactNode
 }) {
   return (
-    <div className="fixed right-2 top-2 flex gap-1.5  items-center">
+    <div className="fixed z-20 right-2 top-2 flex gap-1.5  items-center">
       {children}
     </div>
   )

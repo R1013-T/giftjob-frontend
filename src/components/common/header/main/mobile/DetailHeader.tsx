@@ -17,7 +17,12 @@ export default function MobileDetailHeader(props: Props) {
           onClick={() => router.push('/main')}
         />
       )}
-      <p className="ml-2 font-medium">{props.headerTitle}</p>
+      <p
+        className="ml-2 font-medium"
+        onClick={() => router.push(`/main/${pathname.split('/')[2]}`)}
+      >
+        {props.headerTitle}
+      </p>
     </div>
   )
 }

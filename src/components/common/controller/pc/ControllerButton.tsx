@@ -10,6 +10,7 @@ type Props = {
   icon: any
   handleClick: () => void
   primary?: boolean
+  alert?: boolean
 }
 
 export default function PcControllerButton(props: Props) {
@@ -19,8 +20,10 @@ export default function PcControllerButton(props: Props) {
         <TooltipTrigger
           className={
             props.primary
-              ? 'bg-primary py-1.5 pl-2 pr-3 border rounded text-white flex font-normal transition-opacity hover:opacity-50'
-              : 'bg-card p-1.5 border rounded text-character transition-opacity hover:opacity-50'
+              ? 'bg-primary tracking-wider py-1.5 pl-2 pr-3 border rounded text-white flex font-normal transition-opacity hover:opacity-70'
+              : `bg-card p-1.5 border rounded text-character transition-opacity hover:opacity-50 ${
+                  props.alert && 'text-red-400'
+                }`
           }
           onClick={props.handleClick}
         >
