@@ -1,7 +1,6 @@
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-import AddInner from '@/components/main/company/modal/modalContent/add/AddInner'
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -15,7 +14,7 @@ type Props = {
   setIsOpen: (isOpen: boolean) => void
 }
 
-export default function CompanyAddModal(props: Props) {
+export default function CompanyDetailEditModal(props: Props) {
   const router = useRouter()
   return (
     <AlertDialog open={props.isOpen} onOpenChange={props.setIsOpen}>
@@ -28,10 +27,8 @@ export default function CompanyAddModal(props: Props) {
         >
           <XMarkIcon className="w-6 h-6" />
         </AlertDialogCancel>
-        <AlertDialogTitle>Add Company</AlertDialogTitle>
-        <AlertDialogDescription>
-          <AddInner setIsOpen={props.setIsOpen} />
-        </AlertDialogDescription>
+        <AlertDialogTitle>Edit Company</AlertDialogTitle>
+        <AlertDialogDescription>edit</AlertDialogDescription>
       </AlertDialogContent>
     </AlertDialog>
   )

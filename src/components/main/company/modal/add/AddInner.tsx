@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 
-import Confirm from '@/components/main/company/modal/modalContent/add/Confirm'
-import InputFields from '@/components/main/company/modal/modalContent/add/InputFields'
-import SelectTemplate from '@/components/main/company/modal/modalContent/add/SelectTemplate'
+import Confirm from '@/components/main/company/modal/add/Confirm'
+import InputFields from '@/components/main/company/modal/add/InputFields'
+import SelectTemplate from '@/components/main/company/modal/add/SelectTemplate'
 import type { CompanyDefaultInfo } from '@/types/company'
 
 type Props = {

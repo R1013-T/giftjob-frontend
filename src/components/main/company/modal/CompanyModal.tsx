@@ -3,9 +3,9 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import CompanyAddModal from '@/components/main/company/modal/Add'
-import CompanyFilterModal from '@/components/main/company/modal/Filter'
-import CompanySortModal from '@/components/main/company/modal/Sort'
+import CompanyAddModal from '@/components/main/company/modal/add/Add'
+import CompanyFilterModal from '@/components/main/company/modal/filter/Filter'
+import CompanySortModal from '@/components/main/company/modal/sort/Sort'
 
 export default function CompanyModal() {
   const searchParams = useSearchParams()

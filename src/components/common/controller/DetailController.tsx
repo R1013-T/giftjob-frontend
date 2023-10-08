@@ -3,7 +3,6 @@
 import {
   ArrowPathIcon,
   ArrowUturnLeftIcon,
-  BarsArrowDownIcon,
   PencilSquareIcon,
   TrashIcon,
 } from '@heroicons/react/24/outline'

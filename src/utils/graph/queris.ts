@@ -23,3 +23,34 @@ export const GET_USER_COMPANY = gql`
     }
   }
 `
+
+export const GET_COMPANY = gql`
+  query GetCompany($id: ID!) {
+    getCompany(id: $id) {
+      id
+      name
+      tell
+      email
+      address
+      site_url
+      industry
+      employees_number
+      is_pinned
+      pinned_at
+      is_trash
+      user_id
+      created_at
+      updated_at
+      CompanyCustomFields {
+        id
+        group_name
+        label
+        value
+        type
+        company_id
+        created_at
+        updated_at
+      }
+    }
+  }
+`

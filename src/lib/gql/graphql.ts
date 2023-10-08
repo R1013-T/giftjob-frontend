@@ -23,6 +23,7 @@ export type Incremental<T> =
       [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never
     }
 const defaultOptions = {} as const
+
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string }
@@ -524,229 +525,112 @@ export type GetUserCompanyQuery = {
   } | null
 }
 
-export const SignInDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'mutation',
-      name: { kind: 'Name', value: 'SignIn' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: {
-            kind: 'Variable',
-            name: { kind: 'Name', value: 'input' },
-          },
-          type: {
-            kind: 'NonNullType',
-            type: {
-              kind: 'NamedType',
-              name: { kind: 'Name', value: 'SignInInput' },
-            },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'signIn' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'input' },
-                value: {
-                  kind: 'Variable',
-                  name: { kind: 'Name', value: 'input' },
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'image' } },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<SignInMutation, SignInMutationVariables>
-export const CreateCompanyDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'mutation',
-      name: { kind: 'Name', value: 'CreateCompany' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: {
-            kind: 'Variable',
-            name: { kind: 'Name', value: 'input' },
-          },
-          type: {
-            kind: 'NonNullType',
-            type: {
-              kind: 'NamedType',
-              name: { kind: 'Name', value: 'CreateCompanyInput' },
-            },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'createCompany' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'input' },
-                value: {
-                  kind: 'Variable',
-                  name: { kind: 'Name', value: 'input' },
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'tell' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'address' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'site_url' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'industry' } },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'employees_number' },
-                },
-                { kind: 'Field', name: { kind: 'Name', value: 'is_pinned' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'pinned_at' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'is_trash' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'user_id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'created_at' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'updated_at' } },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<
-  CreateCompanyMutation,
-  CreateCompanyMutationVariables
->
-export const GetUserCompanyDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'GetUserCompany' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'getUser' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'id' },
-                value: {
-                  kind: 'Variable',
-                  name: { kind: 'Name', value: 'id' },
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'companies' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'tell' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'email' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'address' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'site_url' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'industry' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'employees_number' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'is_pinned' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'pinned_at' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'is_trash' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'user_id' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'created_at' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'updated_at' },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetUserCompanyQuery, GetUserCompanyQueryVariables>
+export type GetCompanyQueryVariables = Exact<{
+  id: Scalars['ID']['input']
+}>
 
+export type GetCompanyQuery = {
+  __typename?: 'Query'
+  getCompany?: {
+    __typename?: 'Company'
+    id: string
+    name?: string | null
+    tell?: string | null
+    email?: string | null
+    address?: string | null
+    site_url?: string | null
+    industry?: string | null
+    employees_number?: number | null
+    is_pinned?: boolean | null
+    pinned_at?: string | null
+    is_trash?: boolean | null
+    user_id: string
+    created_at: any
+    updated_at: any
+    CompanyCustomFields?: Array<{
+      __typename?: 'CompanyCustomField'
+      id: string
+      group_name: string
+      label: string
+      value?: string | null
+      type: string
+      company_id: string
+      created_at: any
+      updated_at: any
+    } | null> | null
+  } | null
+}
+
+export const SignInDocument = gql`
+  mutation SignIn($input: SignInInput!) {
+    signIn(input: $input) {
+      id
+      name
+      email
+      image
+    }
+  }
+`
+export type SignInMutationFn = Apollo.MutationFunction<
+  SignInMutation,
+  SignInMutationVariables
+>
+
+/**
+ * __useSignInMutation__
+ *
+ * To run a mutation, you first call `useSignInMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSignInMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [signInMutation, { data, loading, error }] = useSignInMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useSignInMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    SignInMutation,
+    SignInMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<SignInMutation, SignInMutationVariables>(
+    SignInDocument,
+    options
+  )
+}
+export type SignInMutationHookResult = ReturnType<typeof useSignInMutation>
+export type SignInMutationResult = Apollo.MutationResult<SignInMutation>
+export type SignInMutationOptions = Apollo.BaseMutationOptions<
+  SignInMutation,
+  SignInMutationVariables
+>
+export const CreateCompanyDocument = gql`
+  mutation CreateCompany($input: CreateCompanyInput!) {
+    createCompany(input: $input) {
+      id
+      name
+      tell
+      email
+      address
+      site_url
+      industry
+      employees_number
+      is_pinned
+      pinned_at
+      is_trash
+      user_id
+      created_at
+      updated_at
+    }
+  }
+`
 export type CreateCompanyMutationFn = Apollo.MutationFunction<
   CreateCompanyMutation,
   CreateCompanyMutationVariables
@@ -790,6 +674,29 @@ export type CreateCompanyMutationOptions = Apollo.BaseMutationOptions<
   CreateCompanyMutation,
   CreateCompanyMutationVariables
 >
+export const GetUserCompanyDocument = gql`
+  query GetUserCompany($id: ID!) {
+    getUser(id: $id) {
+      id
+      companies {
+        id
+        name
+        tell
+        email
+        address
+        site_url
+        industry
+        employees_number
+        is_pinned
+        pinned_at
+        is_trash
+        user_id
+        created_at
+        updated_at
+      }
+    }
+  }
+`
 
 /**
  * __useGetUserCompanyQuery__
@@ -840,4 +747,83 @@ export type GetUserCompanyLazyQueryHookResult = ReturnType<
 export type GetUserCompanyQueryResult = Apollo.QueryResult<
   GetUserCompanyQuery,
   GetUserCompanyQueryVariables
+>
+export const GetCompanyDocument = gql`
+  query GetCompany($id: ID!) {
+    getCompany(id: $id) {
+      id
+      name
+      tell
+      email
+      address
+      site_url
+      industry
+      employees_number
+      is_pinned
+      pinned_at
+      is_trash
+      user_id
+      created_at
+      updated_at
+      CompanyCustomFields {
+        id
+        group_name
+        label
+        value
+        type
+        company_id
+        created_at
+        updated_at
+      }
+    }
+  }
+`
+
+/**
+ * __useGetCompanyQuery__
+ *
+ * To run a query within a React component, call `useGetCompanyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCompanyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCompanyQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetCompanyQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetCompanyQuery,
+    GetCompanyQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetCompanyQuery, GetCompanyQueryVariables>(
+    GetCompanyDocument,
+    options
+  )
+}
+export function useGetCompanyLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetCompanyQuery,
+    GetCompanyQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetCompanyQuery, GetCompanyQueryVariables>(
+    GetCompanyDocument,
+    options
+  )
+}
+export type GetCompanyQueryHookResult = ReturnType<typeof useGetCompanyQuery>
+export type GetCompanyLazyQueryHookResult = ReturnType<
+  typeof useGetCompanyLazyQuery
+>
+export type GetCompanyQueryResult = Apollo.QueryResult<
+  GetCompanyQuery,
+  GetCompanyQueryVariables
 >

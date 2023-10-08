@@ -96,7 +96,9 @@ export default function Confirm(props: Props) {
                 {Object.entries(props.defaultCompanyInfo).map(
                   ([key, value]) => (
                     <div key={key}>
-                      <p>{formatCapitalizedWords(key)}</p>
+                      <p className="opacity-80">
+                        {formatCapitalizedWords(key)}
+                      </p>
                       <p className="mb-2 text-title text-base">{value}</p>
                     </div>
                   )
