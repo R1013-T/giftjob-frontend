@@ -31,3 +31,24 @@ export const CREATE_COMPANY = gql`
     }
   }
 `
+
+export const UPDATE_COMPANY = gql`
+  mutation UpdateCompany($input: UpdateCompanyInput!) {
+    updateCompany(input: $input) {
+      id
+      name
+      tell
+      email
+      address
+      site_url
+      industry
+      employees_number
+      is_pinned
+      pinned_at
+      is_trash
+      user_id
+      created_at
+      updated_at
+    }
+  }
+`

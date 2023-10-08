@@ -1,13 +1,14 @@
 'use client'
 
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
+import { StarIcon } from '@heroicons/react/24/outline'
+import { StarIcon as StarIconFill } from '@heroicons/react/24/solid'
 import { InfoCircle } from 'tabler-icons-react'
 
 import BackButton from '@/components/common/button/BackButton'
 import DetailController from '@/components/common/controller/DetailController'
 import CompanyDetailModal from '@/components/main/company/modal/detail/DetailModal'
 import DetailAccordion from '@/components/main/company/view/detail/DetailAccordion'
+import CompanyDetailLoad from '@/components/main/company/view/load/detail/Load'
 import MainContentWrapper from '@/components/main/MainContentWrapper'
 import type { Company } from '@/lib/gql/graphql'
 import { useGetCompanyQuery } from '@/lib/gql/graphql'
@@ -39,7 +40,7 @@ export default function CompanyDetail({
     /* カスタムフィールドを追加 */
   }
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <CompanyDetailLoad />
   if (error) return <p>Error:{error.message}</p>
   if (!company) return <p>No data</p>
 
@@ -52,8 +53,13 @@ export default function CompanyDetail({
       <DetailController />
       <BackButton link="/main/company" />
       <div className="w-full flex flex-wrap-reverse justify-between items-center">
-        <div className="py-2 flex items-center">
+        <div className="py-2 flex gap-2 items-center">
           <p className="text-title font-medium text-2xl">{company.name}</p>
+          {company.is_pinned ? (
+            <StarIconFill className="w-5 h-5 text-yellow-400 cursor-pointer" />
+          ) : (
+            <StarIcon className="w-5 h-5 hover:text-yellow-400 cursor-pointer" />
+          )}
         </div>
 
         <div className="flex">

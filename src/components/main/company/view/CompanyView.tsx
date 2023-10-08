@@ -1,5 +1,5 @@
 import CompanyItem from '@/components/main/company/view/CompanyItem'
-import Load from '@/components/main/company/view/load/Load'
+import CompanyLoad from '@/components/main/company/view/load/Load'
 import type { Company } from '@/lib/gql/graphql'
 import { useGetUserCompanyQuery } from '@/lib/gql/graphql'
 
@@ -15,7 +15,7 @@ const CompanyView: React.FC<Props> = ({ userId }) => {
   })
   const companies: Company[] = data?.getUser?.companies as Company[]
 
-  if (loading) return <Load />
+  if (loading) return <CompanyLoad />
   if (error) return <p>Error:{error.message}</p>
   if (!companies) return <p>No data</p>
 

@@ -1,7 +1,10 @@
-import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+'use client'
+
+import { ExclamationCircleIcon } from '@heroicons/react/24/outline'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { InfoCircle } from 'tabler-icons-react'
+import { InfoCircle, Loader } from 'tabler-icons-react'
 import type * as z from 'zod'
 
 import {
@@ -10,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -19,34 +23,82 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import type { CompanyDefaultInfo } from '@/types/company'
+import { toast } from '@/components/ui/use-toast'
+import type { Company } from '@/lib/gql/graphql'
+import { GetCompanyDocument, useUpdateCompanyMutation } from '@/lib/gql/graphql'
 import formatCapitalizedWords from '@/utils/common/formatCapitalizedWords'
 import { inputFields } from '@/utils/main/company/defaultInfoFields'
 import { defaultCompanyInfoFormSchema } from '@/utils/main/company/defaultInfoSchema'
 
 type Props = {
-  setAddState: (addState: string) => void
-  defaultCompanyInfo: CompanyDefaultInfo | undefined
-  setDefaultCompanyInfo: (
-    defaultCompanyInfo: CompanyDefaultInfo | undefined
-  ) => void
+  company: Company
+  setIsOpen: (isOpen: boolean) => void
 }
 
-export default function InputFields(props: Props) {
+export default function CompanyEditInner(props: Props) {
+  const [AlertMessage, setAlertMessage] = useState('')
+
+  const [updateCompany, { data, loading, error }] = useUpdateCompanyMutation({
+    refetchQueries: [
+      {
+        query: GetCompanyDocument,
+        variables: { id: props.company.id },
+      },
+    ],
+  })
+
+  const defaultValues = {
+    name: props.company?.name as string,
+    email: props.company?.email as string,
+    tell: props.company?.tell as string,
+    address: props.company?.address as string,
+    industry: props.company?.industry as string,
+    employees_number: props.company?.employees_number as number,
+    site_url: props.company?.site_url as string,
+  }
+
   const form = useForm<z.infer<typeof defaultCompanyInfoFormSchema>>({
     resolver: zodResolver(defaultCompanyInfoFormSchema),
     defaultValues: {
-      ...props.defaultCompanyInfo,
+      ...defaultValues,
     },
   })
 
-  function onSubmit(data: z.infer<typeof defaultCompanyInfoFormSchema>) {
-    props.setDefaultCompanyInfo(data as CompanyDefaultInfo)
-    props.setAddState('confirm')
+  async function onSubmit(data: z.infer<typeof defaultCompanyInfoFormSchema>) {
+    await updateCompany({
+      variables: {
+        input: {
+          id: props.company.id,
+          ...data,
+        },
+      },
+    }).then((res) => {
+      if (!res.data) return
+      toast({
+        title: 'Company created successfully 🎉',
+        description: `Company ${res.data.updateCompany?.name} has been created successfully!`,
+      })
+      props.setIsOpen(false)
+    })
   }
+
+  useEffect(() => {
+    if (error?.message) {
+      setAlertMessage(error.message)
+    } else {
+      setAlertMessage('')
+    }
+  }, [error])
 
   return (
     <Form {...form}>
+      {AlertMessage && (
+        <Alert variant="destructive" className="bg-red-100 mb-3">
+          <ExclamationCircleIcon className="h-5 w-5" />
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>{AlertMessage}</AlertDescription>
+        </Alert>
+      )}
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-3 text-left"
@@ -91,50 +143,22 @@ export default function InputFields(props: Props) {
                 ))}
               </AccordionContent>
             </AccordionItem>
-            {/*<AccordionItem value='item2'>*/}
-            {/*  <AccordionTrigger>General Information</AccordionTrigger>*/}
-            {/*  <AccordionContent>*/}
-            {/*    {inputFields.map((inputField) => (*/}
-            {/*      <div*/}
-            {/*        key={inputField.name}*/}
-            {/*        className='mt-2'*/}
-            {/*      >*/}
-            {/*        <FormField*/}
-            {/*          control={form.control}*/}
-            {/*          name={inputField.name as any}*/}
-            {/*          render={({ field }) => (*/}
-            {/*            <FormItem>*/}
-            {/*              <FormLabel>{inputField.label}</FormLabel>*/}
-            {/*              <Input*/}
-            {/*                type={inputField.type}*/}
-            {/*                placeholder={inputField.label}*/}
-            {/*                className='-translate-y-1.5'*/}
-            {/*                {...field}*/}
-            {/*              />*/}
-            {/*              <FormMessage*/}
-            {/*                className='-translate-y-3 text-xs font-normal'*/}
-            {/*              />*/}
-            {/*            </FormItem>*/}
-            {/*          )}*/}
-            {/*        />*/}
-            {/*      </div>*/}
-            {/*    ))}*/}
-            {/*  </AccordionContent>*/}
-            {/*</AccordionItem>*/}
           </Accordion>
         </div>
-        <Button className="w-full tracking-widest" type="submit">
-          Confirm
-        </Button>
-        <div
-          className="flex items-center justify-center cursor-pointer hover:underline"
-          onClick={() => {
-            props.setAddState('selectTemplate')
-          }}
+        <Button
+          className="w-full tracking-widest"
+          type="submit"
+          disabled={loading}
         >
-          <ArrowLeftIcon className="w-4 h-4" />
-          <p className="ml-1 mr-5">Back</p>
-        </div>
+          {loading ? (
+            <div className="flex items-center justify-center gap-2">
+              <Loader className="animate-spin" size={18} strokeWidth={2} />
+              <p className="font-normal">Updating...</p>
+            </div>
+          ) : (
+            'Update'
+          )}
+        </Button>
       </form>
     </Form>
   )
