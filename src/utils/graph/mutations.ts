@@ -16,6 +16,7 @@ export const CREATE_COMPANY = gql`
     createCompany(input: $input) {
       id
       name
+      color
       tell
       email
       address
@@ -37,6 +38,7 @@ export const UPDATE_COMPANY = gql`
     updateCompany(input: $input) {
       id
       name
+      color
       tell
       email
       address

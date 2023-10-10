@@ -2,6 +2,7 @@ import {
   ArrowLeftIcon,
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline'
+import { Circle, Square } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { InfoCircle, Loader } from 'tabler-icons-react'
@@ -99,7 +100,20 @@ export default function Confirm(props: Props) {
                       <p className="opacity-80">
                         {formatCapitalizedWords(key)}
                       </p>
-                      <p className="mb-2 text-title text-base">{value}</p>
+                      {key === 'color' ? (
+                        <div
+                          style={{
+                            backgroundColor: `var(--color-${value}-bg)`,
+                            border: `2px solid var(--color-${value})`,
+                            color: `var(--color-${value})`,
+                          }}
+                          className="w-full max-w-[200px] m-0.5 bg-red-500 grid place-items-center rounded-md"
+                        >
+                          <p className="p-1">{value}</p>
+                        </div>
+                      ) : (
+                        <p className="mb-2 text-title text-base">{value}</p>
+                      )}
                     </div>
                   )
                 )}

@@ -23,7 +23,6 @@ export type Incremental<T> =
       [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never
     }
 const defaultOptions = {} as const
-
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string }
@@ -37,7 +36,8 @@ export type Scalars = {
 
 export type Calendar = {
   __typename?: 'Calendar'
-  company_id: Scalars['ID']['output']
+  color?: Maybe<Scalars['String']['output']>
+  company_id?: Maybe<Scalars['ID']['output']>
   created_at: Scalars['Time']['output']
   description?: Maybe<Scalars['String']['output']>
   end_time?: Maybe<Scalars['String']['output']>
@@ -55,6 +55,7 @@ export type Company = {
   __typename?: 'Company'
   CompanyCustomFields?: Maybe<Array<Maybe<CompanyCustomField>>>
   address?: Maybe<Scalars['String']['output']>
+  color?: Maybe<Scalars['String']['output']>
   created_at: Scalars['Time']['output']
   email?: Maybe<Scalars['String']['output']>
   employees_number?: Maybe<Scalars['Float']['output']>
@@ -104,7 +105,8 @@ export type CompanyCustomTemplateField = {
 }
 
 export type CreateCalendarInput = {
-  company_id: Scalars['ID']['input']
+  color?: InputMaybe<Scalars['String']['input']>
+  company_id?: InputMaybe<Scalars['ID']['input']>
   description?: InputMaybe<Scalars['String']['input']>
   end_time?: InputMaybe<Scalars['String']['input']>
   is_all_day?: InputMaybe<Scalars['Boolean']['input']>
@@ -117,6 +119,7 @@ export type CreateCalendarInput = {
 
 export type CreateCompanyInput = {
   address?: InputMaybe<Scalars['String']['input']>
+  color?: InputMaybe<Scalars['String']['input']>
   email?: InputMaybe<Scalars['String']['input']>
   employees_number?: InputMaybe<Scalars['Float']['input']>
   industry?: InputMaybe<Scalars['String']['input']>
@@ -138,6 +141,8 @@ export type CreateCustomFieldInput = {
 }
 
 export type CreateNoteInput = {
+  color?: InputMaybe<Scalars['String']['input']>
+  company_id?: InputMaybe<Scalars['ID']['input']>
   content?: InputMaybe<Scalars['String']['input']>
   is_pinned?: InputMaybe<Scalars['Boolean']['input']>
   is_trash?: InputMaybe<Scalars['Boolean']['input']>
@@ -147,7 +152,7 @@ export type CreateNoteInput = {
 }
 
 export type CreatePersonInput = {
-  company_id: Scalars['ID']['input']
+  company_id?: InputMaybe<Scalars['ID']['input']>
   department?: InputMaybe<Scalars['String']['input']>
   email?: InputMaybe<Scalars['String']['input']>
   is_trash?: InputMaybe<Scalars['Boolean']['input']>
@@ -185,7 +190,7 @@ export type Mutation = {
   createCalendar?: Maybe<Calendar>
   createCompany?: Maybe<Company>
   createCustomField?: Maybe<CompanyCustomField>
-  createNoteForPerson?: Maybe<Note>
+  createNote?: Maybe<Note>
   createPerson?: Maybe<Person>
   createTemplate?: Maybe<CompanyCustomTemplate>
   createTemplateField?: Maybe<CompanyCustomTemplateField>
@@ -193,7 +198,7 @@ export type Mutation = {
   deleteCalendar?: Maybe<Calendar>
   deleteCompany?: Maybe<Company>
   deleteCustomField?: Maybe<CompanyCustomField>
-  deleteNoteForPerson?: Maybe<Note>
+  deleteNote?: Maybe<Note>
   deletePerson?: Maybe<Person>
   deleteTemplate?: Maybe<CompanyCustomTemplate>
   deleteTemplateField?: Maybe<CompanyCustomTemplateField>
@@ -201,7 +206,7 @@ export type Mutation = {
   updateCalendar?: Maybe<Calendar>
   updateCompany?: Maybe<Company>
   updateCustomField?: Maybe<CompanyCustomField>
-  updateNoteForPerson?: Maybe<Note>
+  updateNote?: Maybe<Note>
   updatePerson?: Maybe<Person>
   updateTemplate?: Maybe<CompanyCustomTemplate>
   updateTemplateField?: Maybe<CompanyCustomTemplateField>
@@ -219,7 +224,7 @@ export type MutationCreateCustomFieldArgs = {
   input?: InputMaybe<CreateCustomFieldInput>
 }
 
-export type MutationCreateNoteForPersonArgs = {
+export type MutationCreateNoteArgs = {
   input?: InputMaybe<CreateNoteInput>
 }
 
@@ -251,7 +256,7 @@ export type MutationDeleteCustomFieldArgs = {
   id: Scalars['ID']['input']
 }
 
-export type MutationDeleteNoteForPersonArgs = {
+export type MutationDeleteNoteArgs = {
   id: Scalars['ID']['input']
 }
 
@@ -283,7 +288,7 @@ export type MutationUpdateCustomFieldArgs = {
   input?: InputMaybe<UpdateCustomFieldInput>
 }
 
-export type MutationUpdateNoteForPersonArgs = {
+export type MutationUpdateNoteArgs = {
   input?: InputMaybe<UpdateNoteInput>
 }
 
@@ -301,6 +306,8 @@ export type MutationUpdateTemplateFieldArgs = {
 
 export type Note = {
   __typename?: 'Note'
+  color?: Maybe<Scalars['String']['output']>
+  company_id?: Maybe<Scalars['ID']['output']>
   content?: Maybe<Scalars['String']['output']>
   created_at: Scalars['Time']['output']
   id: Scalars['ID']['output']
@@ -314,7 +321,7 @@ export type Note = {
 
 export type Person = {
   __typename?: 'Person'
-  company_id: Scalars['ID']['output']
+  company_id?: Maybe<Scalars['ID']['output']>
   created_at: Scalars['Time']['output']
   department?: Maybe<Scalars['String']['output']>
   email?: Maybe<Scalars['String']['output']>
@@ -371,6 +378,7 @@ export type SignInInput = {
 }
 
 export type UpdateCalendarInput = {
+  color?: InputMaybe<Scalars['String']['input']>
   company_id?: InputMaybe<Scalars['ID']['input']>
   description?: InputMaybe<Scalars['String']['input']>
   end_time?: InputMaybe<Scalars['String']['input']>
@@ -384,6 +392,7 @@ export type UpdateCalendarInput = {
 
 export type UpdateCompanyInput = {
   address?: InputMaybe<Scalars['String']['input']>
+  color?: InputMaybe<Scalars['String']['input']>
   email?: InputMaybe<Scalars['String']['input']>
   employees_number?: InputMaybe<Scalars['Float']['input']>
   id: Scalars['ID']['input']
@@ -405,6 +414,8 @@ export type UpdateCustomFieldInput = {
 }
 
 export type UpdateNoteInput = {
+  color?: InputMaybe<Scalars['String']['input']>
+  company_id?: InputMaybe<Scalars['ID']['input']>
   content?: InputMaybe<Scalars['String']['input']>
   id: Scalars['ID']['input']
   is_pinned?: InputMaybe<Scalars['Boolean']['input']>
@@ -481,6 +492,7 @@ export type CreateCompanyMutation = {
     __typename?: 'Company'
     id: string
     name?: string | null
+    color?: string | null
     tell?: string | null
     email?: string | null
     address?: string | null
@@ -506,6 +518,7 @@ export type UpdateCompanyMutation = {
     __typename?: 'Company'
     id: string
     name?: string | null
+    color?: string | null
     tell?: string | null
     email?: string | null
     address?: string | null
@@ -534,6 +547,7 @@ export type GetUserCompanyQuery = {
       __typename?: 'Company'
       id: string
       name?: string | null
+      color?: string | null
       tell?: string | null
       email?: string | null
       address?: string | null
@@ -560,6 +574,7 @@ export type GetCompanyQuery = {
     __typename?: 'Company'
     id: string
     name?: string | null
+    color?: string | null
     tell?: string | null
     email?: string | null
     address?: string | null
@@ -641,6 +656,7 @@ export const CreateCompanyDocument = gql`
     createCompany(input: $input) {
       id
       name
+      color
       tell
       email
       address
@@ -704,6 +720,7 @@ export const UpdateCompanyDocument = gql`
     updateCompany(input: $input) {
       id
       name
+      color
       tell
       email
       address
@@ -769,6 +786,7 @@ export const GetUserCompanyDocument = gql`
       companies {
         id
         name
+        color
         tell
         email
         address
@@ -841,6 +859,7 @@ export const GetCompanyDocument = gql`
     getCompany(id: $id) {
       id
       name
+      color
       tell
       email
       address

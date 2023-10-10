@@ -1,5 +1,6 @@
 import { StarIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { StarIcon as StarIconFill } from '@heroicons/react/24/solid'
+import { Circle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import TrashAlert from '@/components/common/alert/Trash'
@@ -52,9 +53,17 @@ const CompanyItem: React.FC<Props> = ({ company }) => {
           }
         />
       </div>
-      <p className="text-xl font-medium mb-2 tracking-wide w-full overflow-x-auto hide-scrollbar">
-        {company.name}
-      </p>
+      <div className="flex gap-1 items-center mb-2">
+        <Circle
+          style={{
+            color: `var(--color-${company.color || ''})`,
+          }}
+          className="w-5 h-5 fill-current"
+        />
+        <p className="text-xl font-medium tracking-wide overflow-x-auto hide-scrollbar">
+          {company.name}
+        </p>
+      </div>
       <ItemField label="Email" value={company.email || ''} />
       <ItemField label="Tell" value={company.tell || ''} />
       <ItemField label="Address" value={company.address || ''} />

@@ -1,5 +1,6 @@
 export type CompanyDefaultInfo = {
   name: string
+  color: string
   tell: string
   email: string
   address: string

@@ -7,6 +7,7 @@ export const GET_USER_COMPANY = gql`
       companies {
         id
         name
+        color
         tell
         email
         address
@@ -29,6 +30,7 @@ export const GET_COMPANY = gql`
     getCompany(id: $id) {
       id
       name
+      color
       tell
       email
       address

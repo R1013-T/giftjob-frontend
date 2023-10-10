@@ -2,6 +2,7 @@
 
 import { StarIcon } from '@heroicons/react/24/outline'
 import { StarIcon as StarIconFill } from '@heroicons/react/24/solid'
+import { Circle } from 'lucide-react'
 import { InfoCircle } from 'tabler-icons-react'
 
 import BackButton from '@/components/common/button/BackButton'
@@ -31,6 +32,7 @@ export default function CompanyDetail({
 
   const defaultValues = {
     name: company?.name,
+    color: company?.color,
     email: company?.email,
     tell: company?.tell,
     address: company?.address,
@@ -63,7 +65,15 @@ export default function CompanyDetail({
       <BackButton link="/main/company" />
       <div className="w-full flex flex-wrap-reverse justify-between items-center">
         <div className="py-2 flex gap-2 items-center">
-          <p className="text-title font-medium text-2xl">{company.name}</p>
+          <div className="flex items-center gap-1.5">
+            <Circle
+              style={{
+                color: `var(--color-${company.color || ''})`,
+              }}
+              className="w-6 h-6 fill-current"
+            />
+            <p className="text-title font-medium text-2xl">{company.name}</p>
+          </div>
           <div
             onClick={() =>
               toast({

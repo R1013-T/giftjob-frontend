@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { InfoCircle } from 'tabler-icons-react'
 import type * as z from 'zod'
 
+import ColorPicker from '@/components/common/form/colorPicker/ColorPicker'
 import {
   Accordion,
   AccordionContent,
@@ -65,6 +66,7 @@ export default function InputFields(props: Props) {
                 </div>
               </AccordionTrigger>
               <AccordionContent>
+                <ColorPicker form={form} />
                 {inputFields.map((inputField) => (
                   <div key={inputField.name} className="mt-2 px-1">
                     <FormField
