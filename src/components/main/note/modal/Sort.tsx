@@ -1,5 +1,6 @@
 import { usePathname, useRouter } from 'next/navigation'
 
+import ComingSoon from '@/components/common/comingSoon/ComingSoon'
 import {
   Dialog,
   DialogContent,
@@ -20,7 +21,9 @@ export default function NoteSortModal(props: Props) {
       <DialogContent onCloseAutoFocus={() => router.back()}>
         <DialogHeader>
           <DialogTitle>Note Sort</DialogTitle>
-          <DialogDescription>Note sort modal</DialogDescription>
+          <DialogDescription className="relative h-40 rounded-md overflow-hidden">
+            <ComingSoon />
+          </DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>

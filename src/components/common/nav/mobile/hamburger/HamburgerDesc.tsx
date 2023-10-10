@@ -23,9 +23,9 @@ const HamburgerDesc = () => {
       <NavItem icon={Cog6ToothIcon} text="Settings" link="/main/settings" />
       <NavItem
         icon={ChatBubbleLeftRightIcon}
-        text="Support"
+        text="Contact"
         func={() => {
-          console.log('support')
+          console.log('contact')
         }}
       />
     </div>

@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 
 import TrashAlert from '@/components/common/alert/Trash'
 import { Button } from '@/components/ui/button'
+import { useToast } from '@/components/ui/use-toast'
 import type { Company } from '@/lib/gql/graphql'
 
 type Props = {
@@ -21,9 +22,20 @@ const ItemField = ({ label, value }: { label: string; value: string }) => {
 
 const CompanyItem: React.FC<Props> = ({ company }) => {
   const router = useRouter()
+  const { toast } = useToast()
+
   return (
     <div className="border relative rounded-md bg-card p-2.5 text-character">
-      <div className="flex gap-2 absolute right-3 top-3">
+      <div
+        className="flex gap-2 absolute right-3 top-3"
+        onClick={() =>
+          toast({
+            title: 'Coming Soon!',
+            description:
+              'This feature is currently under development and will be available in the future.',
+          })
+        }
+      >
         {company.is_pinned ? (
           <StarIconFill className="w-5 h-5 text-yellow-400 cursor-pointer" />
         ) : (
@@ -31,7 +43,13 @@ const CompanyItem: React.FC<Props> = ({ company }) => {
         )}
         <TrashAlert
           trashName={company.name || 'Company'}
-          onClick={() => console.log('trash')}
+          onClick={() =>
+            toast({
+              title: 'Coming Soon!',
+              description:
+                'This feature is currently under development and will be available in the future.',
+            })
+          }
         />
       </div>
       <p className="text-xl font-medium mb-2 tracking-wide w-full overflow-x-auto hide-scrollbar">

@@ -47,7 +47,7 @@ const NavItem = (props: Props) => {
       onClick={handleClick}
     >
       <props.icon className="w-10 h-10 p-2" />
-      <p className="text-base ml-1">{props.text}</p>
+      <p className="text-base ml-1 tracking-wide">{props.text}</p>
     </div>
   )
 }

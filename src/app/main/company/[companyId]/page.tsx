@@ -10,6 +10,7 @@ import CompanyDetailModal from '@/components/main/company/modal/detail/DetailMod
 import DetailAccordion from '@/components/main/company/view/detail/DetailAccordion'
 import CompanyDetailLoad from '@/components/main/company/view/load/detail/Load'
 import MainContentWrapper from '@/components/main/MainContentWrapper'
+import { useToast } from '@/components/ui/use-toast'
 import type { Company } from '@/lib/gql/graphql'
 import { useGetCompanyQuery } from '@/lib/gql/graphql'
 import convertToJST from '@/utils/common/convertToJst'
@@ -19,6 +20,8 @@ export default function CompanyDetail({
 }: {
   params: { companyId: string }
 }) {
+  const { toast } = useToast()
+
   const { data, loading, error } = useGetCompanyQuery({
     variables: {
       id: params.companyId,
@@ -48,18 +51,34 @@ export default function CompanyDetail({
     <MainContentWrapper>
       <CompanyDetailModal
         trashName={company.name || ''}
-        trashAction={() => console.log('trash')}
+        trashAction={() =>
+          toast({
+            title: 'Coming Soon!',
+            description:
+              'This feature is currently under development and will be available in the future.',
+          })
+        }
       />
       <DetailController />
       <BackButton link="/main/company" />
       <div className="w-full flex flex-wrap-reverse justify-between items-center">
         <div className="py-2 flex gap-2 items-center">
           <p className="text-title font-medium text-2xl">{company.name}</p>
-          {company.is_pinned ? (
-            <StarIconFill className="w-5 h-5 text-yellow-400 cursor-pointer" />
-          ) : (
-            <StarIcon className="w-5 h-5 hover:text-yellow-400 cursor-pointer" />
-          )}
+          <div
+            onClick={() =>
+              toast({
+                title: 'Coming Soon!',
+                description:
+                  'This feature is currently under development and will be available in the future.',
+              })
+            }
+          >
+            {company.is_pinned ? (
+              <StarIconFill className="w-5 h-5 text-yellow-400 cursor-pointer" />
+            ) : (
+              <StarIcon className="w-5 h-5 hover:text-yellow-400 cursor-pointer" />
+            )}
+          </div>
         </div>
 
         <div className="flex">

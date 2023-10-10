@@ -113,9 +113,9 @@ const PcNavBar = () => {
         />
         <NavItem
           icon={ChatBubbleLeftRightIcon}
-          text="Support"
+          text="Contact"
           func={() => {
-            console.log('support')
+            console.log('contact')
           }}
           isMini={isMini}
         />

@@ -1,5 +1,6 @@
 'use client'
 
+import ComingSoon from '@/components/common/comingSoon/ComingSoon'
 import { useIsPcStore } from '@/store/common/isPcStore'
 
 export default function DashboardAiSelfAnalysis() {
@@ -7,14 +8,16 @@ export default function DashboardAiSelfAnalysis() {
 
   if (!isPc)
     return (
-      <section className="w-full border rounded-md bg-card h-60">
+      <section className="w-full relative border rounded-md bg-card h-60">
         <p>mobile pc ai self analytics</p>
+        <ComingSoon />
       </section>
     )
 
   return (
-    <section className="border rounded-md bg-card">
+    <section className="border relative rounded-md bg-card">
       <p>pc ai self analytics</p>
+      <ComingSoon />
     </section>
   )
 }

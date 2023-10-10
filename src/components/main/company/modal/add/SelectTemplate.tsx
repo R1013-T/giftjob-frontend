@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { useToast } from '@/components/ui/use-toast'
 
 type Props = {
   setAddState: (addState: string) => void
@@ -49,6 +50,7 @@ const customTemplate: any[] = [
 
 export default function SelectTemplate(props: Props) {
   const router = useRouter()
+  const { toast } = useToast()
 
   const FormSchema = z.object({
     template: z.string({
@@ -66,13 +68,18 @@ export default function SelectTemplate(props: Props) {
   }
 
   const handleTemplate = () => {
-    document.location.href = '/main/settings?tab=template'
+    // document.location.href = '/main/settings?tab=template'
+    toast({
+      title: 'Coming Soon!',
+      description:
+        'This feature is currently under development and will be available in the future.',
+    })
   }
 
   return (
-    <div className="relative pb-1 text-left">
+    <div className="pb-1 text-left">
       <div
-        className="absolute -top-8 right-0 flex items-center gap-0.5"
+        className="absolute top-14 right-6 flex items-center gap-0.5 hover:underline cursor-pointer"
         onClick={handleTemplate}
       >
         <PencilSquareIcon className="w-4 h-4 mb-0.5" />
