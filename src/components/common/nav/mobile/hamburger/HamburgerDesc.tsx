@@ -1,7 +1,7 @@
 import {
   ArrowLeftOnRectangleIcon,
   ChatBubbleLeftRightIcon,
-  Cog6ToothIcon,
+  Cog6ToothIcon, TrashIcon
 } from '@heroicons/react/24/outline'
 import { signOut } from 'next-auth/react'
 
@@ -12,18 +12,19 @@ const HamburgerDesc = () => {
   return (
     <div>
       <UserCard />
-      <div className="m-3"></div>
+      <div className='m-3'></div>
       <NavItem
         icon={ArrowLeftOnRectangleIcon}
-        text="SignOut"
+        text='SignOut'
         func={() => {
           signOut()
         }}
       />
-      <NavItem icon={Cog6ToothIcon} text="Settings" link="/main/settings" />
+      <NavItem icon={TrashIcon} text='Trash' link='/main/trash' />
+      <NavItem icon={Cog6ToothIcon} text='Settings' link='/main/settings' />
       <NavItem
         icon={ChatBubbleLeftRightIcon}
-        text="Contact"
+        text='Contact'
         func={() => {
           console.log('contact')
         }}
