@@ -54,3 +54,41 @@ export const UPDATE_COMPANY = gql`
     }
   }
 `
+
+export const CREATE_PERSON = gql`
+  mutation CreatePerson($input: CreatePersonInput!) {
+    createPerson(input: $input) {
+      id
+      name
+      department
+      position
+      tell
+      email
+      memo
+      is_trash
+      company_id
+      user_id
+      created_at
+      updated_at
+    }
+  }
+`
+
+export const UPDATE_PERSON = gql`
+  mutation UpdatePerson($input: UpdatePersonInput!) {
+    updatePerson(input: $input) {
+      id
+      name
+      department
+      position
+      tell
+      email
+      memo
+      is_trash
+      company_id
+      user_id
+      created_at
+      updated_at
+    }
+  }
+`

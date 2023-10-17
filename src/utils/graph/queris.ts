@@ -56,3 +56,44 @@ export const GET_COMPANY = gql`
     }
   }
 `
+
+export const GET_USER_PEOPLE = gql`
+  query GetUserPeople($id: ID!) {
+    getUser(id: $id) {
+      id
+      People {
+        id
+        name
+        department
+        position
+        tell
+        email
+        memo
+        is_trash
+        company_id
+        user_id
+        created_at
+        updated_at
+      }
+    }
+  }
+`
+
+export const GET_PERSON = gql`
+  query GetPerson($id: ID!) {
+    getPerson(id: $id) {
+      id
+      name
+      department
+      position
+      tell
+      email
+      memo
+      is_trash
+      company_id
+      user_id
+      created_at
+      updated_at
+    }
+  }
+`

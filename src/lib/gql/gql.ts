@@ -19,10 +19,18 @@ const documents = {
     types.CreateCompanyDocument,
   '\n  mutation UpdateCompany($input: UpdateCompanyInput!) {\n    updateCompany(input: $input) {\n      id\n      name\n      color\n      tell\n      email\n      address\n      site_url\n      industry\n      employees_number\n      is_pinned\n      pinned_at\n      is_trash\n      user_id\n      created_at\n      updated_at\n    }\n  }\n':
     types.UpdateCompanyDocument,
+  '\n  mutation CreatePerson($input: CreatePersonInput!) {\n    createPerson(input: $input) {\n        id\n        name\n        department\n        position\n        tell\n        email\n        memo\n        is_trash\n        company_id\n        user_id\n        created_at\n        updated_at\n    }\n  }\n':
+    types.CreatePersonDocument,
+  '\n  mutation UpdatePerson($input: UpdatePersonInput!) {\n    updatePerson(input: $input) {\n        id\n        name\n        department\n        position\n        tell\n        email\n        memo\n        is_trash\n        company_id\n        user_id\n        created_at\n        updated_at\n    }\n  }\n':
+    types.UpdatePersonDocument,
   '\n  query GetUserCompany($id: ID!) {\n    getUser(id: $id) {\n      id\n      companies {\n        id\n        name\n        color\n        tell\n        email\n        address\n        site_url\n        industry\n        employees_number\n        is_pinned\n        pinned_at\n        is_trash\n        user_id\n        created_at\n        updated_at\n      }\n    }\n  }\n':
     types.GetUserCompanyDocument,
   '\n  query GetCompany($id: ID!) {\n    getCompany(id: $id) {\n      id\n      name\n      color\n      tell\n      email\n      address\n      site_url\n      industry\n      employees_number\n      is_pinned\n      pinned_at\n      is_trash\n      user_id\n      created_at\n      updated_at\n      CompanyCustomFields {\n        id\n        group_name\n        label\n        value\n        type\n        company_id\n        created_at\n        updated_at\n      }\n    }\n  }\n':
     types.GetCompanyDocument,
+  '\n    query GetUserPeople($id: ID!) {\n        getUser(id: $id) {\n            id\n            People {\n                id\n                name\n                department\n                position\n                tell\n                email\n                memo\n                is_trash\n                company_id\n                user_id\n                created_at\n                updated_at\n            }\n        }\n    }\n':
+    types.GetUserPeopleDocument,
+  '\n    query GetPerson($id: ID!) {\n        getPerson(id: $id) {\n            id\n            name\n            department\n            position\n            tell\n            email\n            memo\n            is_trash\n            company_id\n            user_id\n            created_at\n            updated_at\n        }\n    }\n':
+    types.GetPersonDocument,
 }
 
 /**
@@ -61,6 +69,18 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
+  source: '\n  mutation CreatePerson($input: CreatePersonInput!) {\n    createPerson(input: $input) {\n        id\n        name\n        department\n        position\n        tell\n        email\n        memo\n        is_trash\n        company_id\n        user_id\n        created_at\n        updated_at\n    }\n  }\n'
+): (typeof documents)['\n  mutation CreatePerson($input: CreatePersonInput!) {\n    createPerson(input: $input) {\n        id\n        name\n        department\n        position\n        tell\n        email\n        memo\n        is_trash\n        company_id\n        user_id\n        created_at\n        updated_at\n    }\n  }\n']
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: '\n  mutation UpdatePerson($input: UpdatePersonInput!) {\n    updatePerson(input: $input) {\n        id\n        name\n        department\n        position\n        tell\n        email\n        memo\n        is_trash\n        company_id\n        user_id\n        created_at\n        updated_at\n    }\n  }\n'
+): (typeof documents)['\n  mutation UpdatePerson($input: UpdatePersonInput!) {\n    updatePerson(input: $input) {\n        id\n        name\n        department\n        position\n        tell\n        email\n        memo\n        is_trash\n        company_id\n        user_id\n        created_at\n        updated_at\n    }\n  }\n']
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
   source: '\n  query GetUserCompany($id: ID!) {\n    getUser(id: $id) {\n      id\n      companies {\n        id\n        name\n        color\n        tell\n        email\n        address\n        site_url\n        industry\n        employees_number\n        is_pinned\n        pinned_at\n        is_trash\n        user_id\n        created_at\n        updated_at\n      }\n    }\n  }\n'
 ): (typeof documents)['\n  query GetUserCompany($id: ID!) {\n    getUser(id: $id) {\n      id\n      companies {\n        id\n        name\n        color\n        tell\n        email\n        address\n        site_url\n        industry\n        employees_number\n        is_pinned\n        pinned_at\n        is_trash\n        user_id\n        created_at\n        updated_at\n      }\n    }\n  }\n']
 /**
@@ -69,6 +89,18 @@ export function graphql(
 export function graphql(
   source: '\n  query GetCompany($id: ID!) {\n    getCompany(id: $id) {\n      id\n      name\n      color\n      tell\n      email\n      address\n      site_url\n      industry\n      employees_number\n      is_pinned\n      pinned_at\n      is_trash\n      user_id\n      created_at\n      updated_at\n      CompanyCustomFields {\n        id\n        group_name\n        label\n        value\n        type\n        company_id\n        created_at\n        updated_at\n      }\n    }\n  }\n'
 ): (typeof documents)['\n  query GetCompany($id: ID!) {\n    getCompany(id: $id) {\n      id\n      name\n      color\n      tell\n      email\n      address\n      site_url\n      industry\n      employees_number\n      is_pinned\n      pinned_at\n      is_trash\n      user_id\n      created_at\n      updated_at\n      CompanyCustomFields {\n        id\n        group_name\n        label\n        value\n        type\n        company_id\n        created_at\n        updated_at\n      }\n    }\n  }\n']
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: '\n    query GetUserPeople($id: ID!) {\n        getUser(id: $id) {\n            id\n            People {\n                id\n                name\n                department\n                position\n                tell\n                email\n                memo\n                is_trash\n                company_id\n                user_id\n                created_at\n                updated_at\n            }\n        }\n    }\n'
+): (typeof documents)['\n    query GetUserPeople($id: ID!) {\n        getUser(id: $id) {\n            id\n            People {\n                id\n                name\n                department\n                position\n                tell\n                email\n                memo\n                is_trash\n                company_id\n                user_id\n                created_at\n                updated_at\n            }\n        }\n    }\n']
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: '\n    query GetPerson($id: ID!) {\n        getPerson(id: $id) {\n            id\n            name\n            department\n            position\n            tell\n            email\n            memo\n            is_trash\n            company_id\n            user_id\n            created_at\n            updated_at\n        }\n    }\n'
+): (typeof documents)['\n    query GetPerson($id: ID!) {\n        getPerson(id: $id) {\n            id\n            name\n            department\n            position\n            tell\n            email\n            memo\n            is_trash\n            company_id\n            user_id\n            created_at\n            updated_at\n        }\n    }\n']
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {}

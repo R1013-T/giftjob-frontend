@@ -8,8 +8,9 @@ import {
   Cog6ToothIcon,
   DocumentTextIcon,
   HomeIcon,
-  PresentationChartLineIcon, TrashIcon,
-  UserGroupIcon
+  PresentationChartLineIcon,
+  TrashIcon,
+  UserGroupIcon,
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { signOut } from 'next-auth/react'

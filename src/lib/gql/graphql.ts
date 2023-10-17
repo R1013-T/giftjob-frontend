@@ -23,6 +23,7 @@ export type Incremental<T> =
       [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never
     }
 const defaultOptions = {} as const
+
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string }
@@ -159,7 +160,7 @@ export type CreatePersonInput = {
   memo?: InputMaybe<Scalars['String']['input']>
   name?: InputMaybe<Scalars['String']['input']>
   position?: InputMaybe<Scalars['String']['input']>
-  tell?: InputMaybe<Scalars['Float']['input']>
+  tell?: InputMaybe<Scalars['String']['input']>
   user_id: Scalars['ID']['input']
 }
 
@@ -330,7 +331,7 @@ export type Person = {
   memo?: Maybe<Scalars['String']['output']>
   name?: Maybe<Scalars['String']['output']>
   position?: Maybe<Scalars['String']['output']>
-  tell?: Maybe<Scalars['Float']['output']>
+  tell?: Maybe<Scalars['String']['output']>
   updated_at: Scalars['Time']['output']
   user_id: Scalars['ID']['output']
 }
@@ -433,7 +434,7 @@ export type UpdatePersonInput = {
   memo?: InputMaybe<Scalars['String']['input']>
   name?: InputMaybe<Scalars['String']['input']>
   position?: InputMaybe<Scalars['String']['input']>
-  tell?: InputMaybe<Scalars['Float']['input']>
+  tell?: InputMaybe<Scalars['String']['input']>
 }
 
 export type UpdateTemplateFieldInput = {
@@ -534,6 +535,52 @@ export type UpdateCompanyMutation = {
   } | null
 }
 
+export type CreatePersonMutationVariables = Exact<{
+  input: CreatePersonInput
+}>
+
+export type CreatePersonMutation = {
+  __typename?: 'Mutation'
+  createPerson?: {
+    __typename?: 'Person'
+    id: string
+    name?: string | null
+    department?: string | null
+    position?: string | null
+    tell?: string | null
+    email?: string | null
+    memo?: string | null
+    is_trash?: boolean | null
+    company_id?: string | null
+    user_id: string
+    created_at: any
+    updated_at: any
+  } | null
+}
+
+export type UpdatePersonMutationVariables = Exact<{
+  input: UpdatePersonInput
+}>
+
+export type UpdatePersonMutation = {
+  __typename?: 'Mutation'
+  updatePerson?: {
+    __typename?: 'Person'
+    id: string
+    name?: string | null
+    department?: string | null
+    position?: string | null
+    tell?: string | null
+    email?: string | null
+    memo?: string | null
+    is_trash?: boolean | null
+    company_id?: string | null
+    user_id: string
+    created_at: any
+    updated_at: any
+  } | null
+}
+
 export type GetUserCompanyQueryVariables = Exact<{
   id: Scalars['ID']['input']
 }>
@@ -598,6 +645,56 @@ export type GetCompanyQuery = {
       created_at: any
       updated_at: any
     } | null> | null
+  } | null
+}
+
+export type GetUserPeopleQueryVariables = Exact<{
+  id: Scalars['ID']['input']
+}>
+
+export type GetUserPeopleQuery = {
+  __typename?: 'Query'
+  getUser?: {
+    __typename?: 'User'
+    id: string
+    People?: Array<{
+      __typename?: 'Person'
+      id: string
+      name?: string | null
+      department?: string | null
+      position?: string | null
+      tell?: string | null
+      email?: string | null
+      memo?: string | null
+      is_trash?: boolean | null
+      company_id?: string | null
+      user_id: string
+      created_at: any
+      updated_at: any
+    } | null> | null
+  } | null
+}
+
+export type GetPersonQueryVariables = Exact<{
+  id: Scalars['ID']['input']
+}>
+
+export type GetPersonQuery = {
+  __typename?: 'Query'
+  getPerson?: {
+    __typename?: 'Person'
+    id: string
+    name?: string | null
+    department?: string | null
+    position?: string | null
+    tell?: string | null
+    email?: string | null
+    memo?: string | null
+    is_trash?: boolean | null
+    company_id?: string | null
+    user_id: string
+    created_at: any
+    updated_at: any
   } | null
 }
 
@@ -779,6 +876,128 @@ export type UpdateCompanyMutationOptions = Apollo.BaseMutationOptions<
   UpdateCompanyMutation,
   UpdateCompanyMutationVariables
 >
+export const CreatePersonDocument = gql`
+  mutation CreatePerson($input: CreatePersonInput!) {
+    createPerson(input: $input) {
+      id
+      name
+      department
+      position
+      tell
+      email
+      memo
+      is_trash
+      company_id
+      user_id
+      created_at
+      updated_at
+    }
+  }
+`
+export type CreatePersonMutationFn = Apollo.MutationFunction<
+  CreatePersonMutation,
+  CreatePersonMutationVariables
+>
+
+/**
+ * __useCreatePersonMutation__
+ *
+ * To run a mutation, you first call `useCreatePersonMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreatePersonMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createPersonMutation, { data, loading, error }] = useCreatePersonMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreatePersonMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreatePersonMutation,
+    CreatePersonMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    CreatePersonMutation,
+    CreatePersonMutationVariables
+  >(CreatePersonDocument, options)
+}
+export type CreatePersonMutationHookResult = ReturnType<
+  typeof useCreatePersonMutation
+>
+export type CreatePersonMutationResult =
+  Apollo.MutationResult<CreatePersonMutation>
+export type CreatePersonMutationOptions = Apollo.BaseMutationOptions<
+  CreatePersonMutation,
+  CreatePersonMutationVariables
+>
+export const UpdatePersonDocument = gql`
+  mutation UpdatePerson($input: UpdatePersonInput!) {
+    updatePerson(input: $input) {
+      id
+      name
+      department
+      position
+      tell
+      email
+      memo
+      is_trash
+      company_id
+      user_id
+      created_at
+      updated_at
+    }
+  }
+`
+export type UpdatePersonMutationFn = Apollo.MutationFunction<
+  UpdatePersonMutation,
+  UpdatePersonMutationVariables
+>
+
+/**
+ * __useUpdatePersonMutation__
+ *
+ * To run a mutation, you first call `useUpdatePersonMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdatePersonMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updatePersonMutation, { data, loading, error }] = useUpdatePersonMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdatePersonMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdatePersonMutation,
+    UpdatePersonMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<
+    UpdatePersonMutation,
+    UpdatePersonMutationVariables
+  >(UpdatePersonDocument, options)
+}
+export type UpdatePersonMutationHookResult = ReturnType<
+  typeof useUpdatePersonMutation
+>
+export type UpdatePersonMutationResult =
+  Apollo.MutationResult<UpdatePersonMutation>
+export type UpdatePersonMutationOptions = Apollo.BaseMutationOptions<
+  UpdatePersonMutation,
+  UpdatePersonMutationVariables
+>
 export const GetUserCompanyDocument = gql`
   query GetUserCompany($id: ID!) {
     getUser(id: $id) {
@@ -933,4 +1152,140 @@ export type GetCompanyLazyQueryHookResult = ReturnType<
 export type GetCompanyQueryResult = Apollo.QueryResult<
   GetCompanyQuery,
   GetCompanyQueryVariables
+>
+export const GetUserPeopleDocument = gql`
+  query GetUserPeople($id: ID!) {
+    getUser(id: $id) {
+      id
+      People {
+        id
+        name
+        department
+        position
+        tell
+        email
+        memo
+        is_trash
+        company_id
+        user_id
+        created_at
+        updated_at
+      }
+    }
+  }
+`
+
+/**
+ * __useGetUserPeopleQuery__
+ *
+ * To run a query within a React component, call `useGetUserPeopleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserPeopleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserPeopleQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetUserPeopleQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetUserPeopleQuery,
+    GetUserPeopleQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetUserPeopleQuery, GetUserPeopleQueryVariables>(
+    GetUserPeopleDocument,
+    options
+  )
+}
+export function useGetUserPeopleLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetUserPeopleQuery,
+    GetUserPeopleQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetUserPeopleQuery, GetUserPeopleQueryVariables>(
+    GetUserPeopleDocument,
+    options
+  )
+}
+export type GetUserPeopleQueryHookResult = ReturnType<
+  typeof useGetUserPeopleQuery
+>
+export type GetUserPeopleLazyQueryHookResult = ReturnType<
+  typeof useGetUserPeopleLazyQuery
+>
+export type GetUserPeopleQueryResult = Apollo.QueryResult<
+  GetUserPeopleQuery,
+  GetUserPeopleQueryVariables
+>
+export const GetPersonDocument = gql`
+  query GetPerson($id: ID!) {
+    getPerson(id: $id) {
+      id
+      name
+      department
+      position
+      tell
+      email
+      memo
+      is_trash
+      company_id
+      user_id
+      created_at
+      updated_at
+    }
+  }
+`
+
+/**
+ * __useGetPersonQuery__
+ *
+ * To run a query within a React component, call `useGetPersonQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPersonQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPersonQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetPersonQuery(
+  baseOptions: Apollo.QueryHookOptions<GetPersonQuery, GetPersonQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetPersonQuery, GetPersonQueryVariables>(
+    GetPersonDocument,
+    options
+  )
+}
+export function useGetPersonLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetPersonQuery,
+    GetPersonQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetPersonQuery, GetPersonQueryVariables>(
+    GetPersonDocument,
+    options
+  )
+}
+export type GetPersonQueryHookResult = ReturnType<typeof useGetPersonQuery>
+export type GetPersonLazyQueryHookResult = ReturnType<
+  typeof useGetPersonLazyQuery
+>
+export type GetPersonQueryResult = Apollo.QueryResult<
+  GetPersonQuery,
+  GetPersonQueryVariables
 >

@@ -1,4 +1,4 @@
-import ViewController from '@/components/common/controller/ViewController'
+import PeopleModal from '@/components/main/people/modal/PeopleModal'
 
 export default function PeopleLayout({
   children,
@@ -7,7 +7,7 @@ export default function PeopleLayout({
 }) {
   return (
     <div>
-      <ViewController />
+      <PeopleModal />
       {children}
     </div>
   )
