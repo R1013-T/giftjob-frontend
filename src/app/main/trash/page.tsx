@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useSession } from 'next-auth/react'
 
@@ -14,15 +14,21 @@ export default function Trash() {
 
   return (
     <div>
-      <Tabs defaultValue='company' className='w-full p-2'>
+      <Tabs defaultValue="company" className="w-full p-2">
         <TabsList>
-          <TabsTrigger value='company'>Company</TabsTrigger>
-          <TabsTrigger value='people'>People</TabsTrigger>
-          <TabsTrigger value='note'>Note</TabsTrigger>
+          <TabsTrigger value="company">Company</TabsTrigger>
+          <TabsTrigger value="people">People</TabsTrigger>
+          <TabsTrigger value="note">Note</TabsTrigger>
         </TabsList>
-        <TabsContent value='company'><TrashCompany userId={sessionUser?.id} /></TabsContent>
-        <TabsContent value='people'><TrashPeople userId={sessionUser?.id} /></TabsContent>
-        <TabsContent value='note'><TrashNote userId={sessionUser?.id} /></TabsContent>
+        <TabsContent value="company">
+          <TrashCompany userId={sessionUser?.id} />
+        </TabsContent>
+        <TabsContent value="people">
+          <TrashPeople userId={sessionUser?.id} />
+        </TabsContent>
+        <TabsContent value="note">
+          <TrashNote userId={sessionUser?.id} />
+        </TabsContent>
       </Tabs>
     </div>
   )

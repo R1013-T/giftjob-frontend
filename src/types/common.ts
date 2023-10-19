@@ -5,6 +5,6 @@ export type StepperItem = {
 }
 
 export type Field = {
-  name: string,
-  value: string | number,
+  name: string
+  value: string | number
 }

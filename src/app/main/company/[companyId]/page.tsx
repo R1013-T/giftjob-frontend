@@ -15,22 +15,35 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/use-toast'
 import type { Company } from '@/lib/gql/graphql'
-import { useGetCompanyQuery } from '@/lib/gql/graphql'
+import {
+  GetCompanyDocument,
+  useGetCompanyQuery,
+  useUpdateCompanyMutation,
+} from '@/lib/gql/graphql'
 import convertToJST from '@/utils/common/convertToJst'
 
 export default function CompanyDetail({
-                                        params
-                                      }: {
+  params,
+}: {
   params: { companyId: string }
 }) {
   const { toast } = useToast()
 
   const { data, loading, error } = useGetCompanyQuery({
     variables: {
-      id: params.companyId
-    }
+      id: params.companyId,
+    },
   })
   const company = data?.getCompany as Company
+
+  const [updateCompany] = useUpdateCompanyMutation({
+    refetchQueries: [
+      {
+        query: GetCompanyDocument,
+        variables: { id: company?.id },
+      },
+    ],
+  })
 
   const defaultValues = {
     name: company?.name,
@@ -40,7 +53,7 @@ export default function CompanyDetail({
     address: company?.address,
     industry: company?.industry,
     employees_number: company?.employees_number,
-    site_url: company?.site_url
+    site_url: company?.site_url,
   }
 
   {
@@ -56,65 +69,83 @@ export default function CompanyDetail({
       <CompanyDetailModal
         trashName={company.name || ''}
         trashAction={() =>
-          toast({
-            title: 'Coming Soon!',
-            description:
-              'This feature is currently under development and will be available in the future.'
+          updateCompany({
+            variables: {
+              input: {
+                id: company.id,
+                is_trash: true,
+              },
+            },
           })
         }
       />
       <DetailController />
-      <BackButton link='/main/company' />
-      <div className='w-full flex flex-wrap-reverse justify-between items-center'>
+      <BackButton link="/main/company" />
+      <div className="w-full flex flex-wrap-reverse justify-between items-center">
         {company.is_trash && (
-          <Alert variant='destructive' className='bg-red-100 flex flex-wrap justify-between items-center gap-2'>
-            <AlertDescription className='font-medium text-base'>
+          <Alert
+            variant="destructive"
+            className="bg-red-100 flex flex-wrap justify-between items-center gap-2"
+          >
+            <AlertDescription className="font-medium text-base">
               This company is trashed. If you want to restore it, please click
             </AlertDescription>
-            <Button className='-my-1 tracking-wider'>
+            <Button
+              className="-my-1 tracking-wider"
+              onClick={() =>
+                updateCompany({
+                  variables: {
+                    input: {
+                      id: company.id,
+                      is_trash: false,
+                    },
+                  },
+                })
+              }
+            >
               Restore
             </Button>
           </Alert>
         )}
-        <div className='py-2 flex gap-2 items-center'>
-          <div className='flex items-center gap-1.5'>
+        <div className="py-2 flex gap-2 items-center">
+          <div className="flex items-center gap-1.5">
             <Circle
               style={{
-                color: `var(--color-${company.color || ''})`
+                color: `var(--color-${company.color || ''})`,
               }}
-              className='w-6 h-6 fill-current'
+              className="w-6 h-6 fill-current"
             />
-            <p className='text-title font-medium text-2xl'>{company.name}</p>
+            <p className="text-title font-medium text-2xl">{company.name}</p>
           </div>
           <div
             onClick={() =>
               toast({
                 title: 'Coming Soon!',
                 description:
-                  'This feature is currently under development and will be available in the future.'
+                  'This feature is currently under development and will be available in the future.',
               })
             }
           >
             {company.is_pinned ? (
-              <StarIconFill className='w-5 h-5 text-yellow-400 cursor-pointer' />
+              <StarIconFill className="w-5 h-5 text-yellow-400 cursor-pointer" />
             ) : (
-              <StarIcon className='w-5 h-5 hover:text-yellow-400 cursor-pointer' />
+              <StarIcon className="w-5 h-5 hover:text-yellow-400 cursor-pointer" />
             )}
           </div>
         </div>
 
-        <div className='flex'>
-          <div className='text-character text-xs flex flex-col gap-0.5 border-r pr-1.5 mr-1.5'>
-            <span className='scale-90 -ml-1.5 opacity-80'>Created At</span>
+        <div className="flex">
+          <div className="text-character text-xs flex flex-col gap-0.5 border-r pr-1.5 mr-1.5">
+            <span className="scale-90 -ml-1.5 opacity-80">Created At</span>
             <p>{convertToJST(company.created_at)}</p>
           </div>
-          <div className='text-character text-xs flex flex-col gap-0.5'>
-            <span className='scale-90 -ml-1.5 opacity-80'>Updated At</span>
+          <div className="text-character text-xs flex flex-col gap-0.5">
+            <span className="scale-90 -ml-1.5 opacity-80">Updated At</span>
             <p>{convertToJST(company.updated_at)}</p>
           </div>
         </div>
       </div>
-      <div className='text-character'>
+      <div className="text-character">
         <DetailAccordion fields={defaultValues} icon={InfoCircle} />
         {/* カスタムフィールドを追加 */}
       </div>
