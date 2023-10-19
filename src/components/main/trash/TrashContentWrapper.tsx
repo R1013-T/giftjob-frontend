@@ -6,8 +6,8 @@ export default function TrashContentWrapper({
   children: React.ReactNode
 }) {
   return (
-    <Card>
-      <CardContent className="h-TabPageContent overflow-y-scroll p-3 pb-16 bg-background">
+    <Card className="border-none">
+      <CardContent className="h-TabPageContent overflow-y-scroll p-1 pb-16 bg-muted">
         {children}
       </CardContent>
     </Card>

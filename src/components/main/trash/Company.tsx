@@ -45,7 +45,7 @@ export default function TrashCompany({ userId }: { userId: string }) {
 
   return (
     <TrashContentWrapper>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1">
         {companies?.map((company: Company) => (
           <CompanyItem key={company.id} company={company} />
         ))}

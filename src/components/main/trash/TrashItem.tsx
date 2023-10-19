@@ -15,7 +15,7 @@ export default function TrashItem(props: Props) {
   const router = useRouter()
 
   return (
-    <div className="text-character bg-card border p-2 rounded cursor-pointer hover:border-gray-300">
+    <div className="text-character bg-background border p-2 rounded cursor-pointer hover:border-gray-300">
       <div onClick={() => router.push(`/main/${props.category}/${props.id}`)}>
         <div className="text-base font-medium">{props.name}</div>
         {props.fields.map((field, index) => (
