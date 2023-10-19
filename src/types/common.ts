@@ -3,3 +3,8 @@ export type StepperItem = {
   title: string
   description: string
 }
+
+export type Field = {
+  name: string,
+  value: string | number,
+}

@@ -29,6 +29,7 @@ module.exports = {
         70: '70dvh',
         DashboardContent: 'calc(100dvh - 210px)',
         MainContent: 'calc(100dvh - 49px)',
+        TabPageContent: 'calc(100dvh - 115px)',
       },
       colors: {
         border: 'hsl(var(--border))',
