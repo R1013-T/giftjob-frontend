@@ -1,3 +1,5 @@
+import CompanyLoad from '@/components/main/company/view/load/Load'
+import PeopleItem from '@/components/main/people/view/PeopleItem'
 import type { Person } from '@/lib/gql/graphql'
 import { useGetUserPeopleQuery } from '@/lib/gql/graphql'
 
@@ -13,26 +15,14 @@ const PeopleView: React.FC<Props> = ({ userId }) => {
   })
   const people: Person[] = data?.getUser?.People as Person[]
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <CompanyLoad />
   if (error) return <p>Error:{error.message}</p>
   if (!people[0]) return <p>No data</p>
 
-  console.log('people ===>', people)
-
   return (
-    <div>
-      <p>PeopleView</p>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3' >
       {people.map((person) => (
-        <div key={person.id} className="border m-2">
-          <p>name: {person.name}</p>
-          <p>department: {person.department}</p>
-          <p>position: {person.position}</p>
-          <p>email: {person.email}</p>
-          <p>tell: {person.tell}</p>
-          <p>memo: {person.memo}</p>
-          <p>companyId</p>
-          <p>{person.company_id}</p>
-        </div>
+        <PeopleItem key={person.id} person={person} />
       ))}
     </div>
   )
