@@ -76,7 +76,7 @@ export default function PersonDetailCompanyDetail({
         {person.is_trash && (
           <Alert
             variant="destructive"
-            className="bg-red-100 flex flex-wrap justify-between items-center gap-2"
+            className="bg-red-100 mb-2 flex flex-wrap justify-between items-center gap-2"
           >
             <AlertDescription className="font-medium text-base">
               This company is trashed. If you want to restore it, please click

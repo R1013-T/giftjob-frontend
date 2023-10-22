@@ -17,7 +17,6 @@ export default function TrashCompany({ userId }: { userId: string }) {
     if (!company.is_trash) return null
 
     const fields: Field[] = [
-      { name: 'Name', value: company.name || '' },
       { name: 'Email', value: company.email || '' },
       { name: 'Tell', value: company.tell || '' },
       { name: 'Address', value: company.address || '' },

@@ -17,10 +17,10 @@ export default function TrashItem(props: Props) {
   return (
     <div className="text-character bg-background border p-2 rounded cursor-pointer hover:border-gray-300">
       <div onClick={() => router.push(`/main/${props.category}/${props.id}`)}>
-        <div className="text-base font-medium">{props.name}</div>
+        <div className="text-base font-medium mb-1">{props.name}</div>
         {props.fields.map((field, index) => (
           <div key={index} className="text-sm pl-0.5">
-            <p>
+            <p className="h-10">
               <span className="opacity-80 text-xs block">{field.name}</span>
               {field.value}
             </p>
