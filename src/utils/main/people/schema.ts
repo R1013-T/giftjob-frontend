@@ -1,7 +1,7 @@
 import * as z from 'zod'
 
 export const PersonFormSchema = z.object({
-  company_id: z.string(),
+  company_id: z.string().optional(),
   name: z.string(),
   department: z.string().optional(),
   position: z.string().optional(),
