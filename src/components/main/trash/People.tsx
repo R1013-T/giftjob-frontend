@@ -45,9 +45,7 @@ export default function TrashPeople({ userId }: { userId: string }) {
     <TrashContentWrapper>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1">
         {people?.map((person: Person) => (
-          <div key={person.id}>
-            <PersonItem person={person} />
-          </div>
+            <PersonItem key={person.id} person={person} />
         ))}
       </div>
     </TrashContentWrapper>
