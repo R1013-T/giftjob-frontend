@@ -8,7 +8,6 @@ import {
   Cog6ToothIcon,
   DocumentTextIcon,
   HomeIcon,
-  PresentationChartLineIcon,
   TrashIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline'
@@ -84,12 +83,6 @@ const PcNavBar = () => {
             icon={CalendarIcon}
             text="Calendar"
             link="/main/calendar"
-            isMini={isMini}
-          />
-          <NavItem
-            icon={PresentationChartLineIcon}
-            text="AI"
-            link="/main/ai"
             isMini={isMini}
           />
         </div>

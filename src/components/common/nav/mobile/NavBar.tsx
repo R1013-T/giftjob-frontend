@@ -16,7 +16,7 @@ const MobileNavBar = () => {
 
   return (
     <div
-      className={`fixed z-20 shadow-xl bg-card border flex gap-4 right-2/4 translate-x-1/2 justify-center ${
+      className={`fixed z-50 shadow-xl bg-card border flex gap-4 right-2/4 translate-x-1/2 justify-center ${
         isMini
           ? 'bottom-2 rounded-full p-1'
           : 'w-full bottom-0 rounded-t-xl py-2'
@@ -52,12 +52,6 @@ const MobileNavBar = () => {
         icon={CalendarIcon}
         text="Calendar"
         link="/main/calendar"
-        isMini={isMini}
-      />
-      <NavBarItem
-        icon={PresentationChartLineIcon}
-        text="AI"
-        link="/main/ai"
         isMini={isMini}
       />
     </div>

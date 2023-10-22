@@ -1,29 +1,18 @@
-'use client'
-
 import DashboardAiEntrySheetReview from '@/components/main/dashboard/AiEntrySheetReview'
+import DashboardAiMockInterview from '@/components/main/dashboard/AiMockInterview'
 import DashboardAiSelfAnalysis from '@/components/main/dashboard/AiSelfAnalysis'
 import DashboardCalendar from '@/components/main/dashboard/Calendar'
-import DashboardCompany from '@/components/main/dashboard/Company'
-import DashboardNote from '@/components/main/dashboard/Note'
-import { useIsPcStore } from '@/store/common/isPcStore'
 
 export default function Main() {
-  const isPc = useIsPcStore((state) => state.isPc)
-
   return (
-    <article className={`w-full p-3 ${isPc ? '' : 'h-full overflow-y-scroll'}`}>
+    <article className="w-full p-3 pb-20 lg:pb-3 overflow-y-auto h-MainContent lg:overflow-y-hidden">
       <DashboardCalendar />
-      <div
-        className={`w-full gap-2 ${
-          isPc
-            ? 'h-DashboardContent grid grid-cols-2 grid-rows-2'
-            : 'flex flex-wrap'
-        }`}
-      >
-        <DashboardAiSelfAnalysis />
-        <DashboardAiEntrySheetReview />
-        <DashboardCompany />
-        <DashboardNote />
+      <div className="lg:h-DashboardContent lg:grid lg:grid-rows-2">
+        <div className="lg:grid lg:grid-cols-2">
+          <DashboardAiSelfAnalysis />
+          <DashboardAiEntrySheetReview />
+        </div>
+        <DashboardAiMockInterview />
       </div>
     </article>
   )

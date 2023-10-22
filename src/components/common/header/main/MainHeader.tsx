@@ -5,13 +5,10 @@ import { useSession } from 'next-auth/react'
 
 import MobileDetailHeader from '@/components/common/header/main/mobile/DetailHeader'
 import PcDetailHeader from '@/components/common/header/main/pc/DetailHeader'
-import { useIsPcStore } from '@/store/common/isPcStore'
 import type { SessionUser } from '@/types/session'
 import capitalizeFirstLetter from '@/utils/common/capitalizeFirstLetter'
 
 export default function MainHeader() {
-  const isPc = useIsPcStore((state) => state.isPc)
-
   const { data: session, status }: any = useSession()
   const sessionUser = session?.sessionUser as SessionUser
   const pathname = usePathname()
@@ -27,19 +24,18 @@ export default function MainHeader() {
     } else {
       headerTitle = `${sessionUser?.name}’s Dashboard`
     }
-  } else if (pathname === '/main/ai') {
-    headerTitle = 'AI JobHunting Management'
   } else {
     headerTitle = capitalizeCurrentPage.split('/')[0]
   }
 
   return (
     <header className="w-full border-b">
-      {isPc ? (
+      <nav className="hidden lg:block">
         <PcDetailHeader headerTitle={headerTitle} />
-      ) : (
+      </nav>
+      <nav className="block lg:hidden">
         <MobileDetailHeader headerTitle={headerTitle} />
-      )}
+      </nav>
     </header>
   )
 }

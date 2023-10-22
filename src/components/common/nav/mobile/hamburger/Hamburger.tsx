@@ -5,7 +5,6 @@ import HamburgerTitle from '@/components/common/nav/mobile/hamburger/HamburgerTi
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,

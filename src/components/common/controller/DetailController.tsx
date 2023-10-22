@@ -12,14 +12,11 @@ import MobileControllerButton from '@/components/common/controller/mobile/Contro
 import MobileControllerWrapper from '@/components/common/controller/mobile/ControllerWrapper'
 import PcControllerWrapper from '@/components/common/controller/pc/ContollerWrapper'
 import PcControllerButton from '@/components/common/controller/pc/ControllerButton'
-import { useIsPcStore } from '@/store/common/isPcStore'
 import type { ControllerButton } from '@/types/controller'
 
 export default function DetailController() {
   const pathname = usePathname()
   const router = useRouter()
-
-  const isPc = useIsPcStore((state) => state.isPc)
 
   const buttonConfigs: ControllerButton[] = [
     {
@@ -46,8 +43,8 @@ export default function DetailController() {
     },
   ]
 
-  if (isPc)
-    return (
+  return (
+    <>
       <PcControllerWrapper>
         {buttonConfigs.map((config, index) => (
           <PcControllerButton
@@ -60,19 +57,17 @@ export default function DetailController() {
           />
         ))}
       </PcControllerWrapper>
-    )
-
-  return (
-    <MobileControllerWrapper>
-      {buttonConfigs.map((config, index) => (
-        <MobileControllerButton
-          key={index}
-          icon={config.icon}
-          handleClick={config.action}
-          primary={config.primary}
-          alert={config.alert}
-        />
-      ))}
-    </MobileControllerWrapper>
+      <MobileControllerWrapper>
+        {buttonConfigs.map((config, index) => (
+          <MobileControllerButton
+            key={index}
+            icon={config.icon}
+            handleClick={config.action}
+            primary={config.primary}
+            alert={config.alert}
+          />
+        ))}
+      </MobileControllerWrapper>
+    </>
   )
 }
