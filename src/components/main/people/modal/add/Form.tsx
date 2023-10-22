@@ -41,13 +41,13 @@ export default function AddPersonForm(props: Props) {
   const form = useForm<z.infer<typeof PersonFormSchema>>({
     resolver: zodResolver(PersonFormSchema),
     defaultValues: {
-      company_id: props.inputValues?.company_id || '',
-      name: props.inputValues?.name || '',
-      department: props.inputValues?.department || '',
-      position: props.inputValues?.position || '',
-      email: props.inputValues?.email || '',
-      tell: props.inputValues?.tell || '',
-      memo: props.inputValues?.memo || '',
+      company_id: props.inputValues?.company_id?.toString(),
+      name: props.inputValues?.name?.toString(),
+      department: props.inputValues?.department?.toString(),
+      position: props.inputValues?.position?.toString(),
+      email: props.inputValues?.email?.toString(),
+      tell: props.inputValues?.tell?.toString(),
+      memo: props.inputValues?.memo?.toString(),
     },
   })
 

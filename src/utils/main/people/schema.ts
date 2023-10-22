@@ -6,6 +6,6 @@ export const PersonFormSchema = z.object({
   department: z.string().optional(),
   position: z.string().optional(),
   tell: z.string().optional(),
-  email: z.string().email().optional().or(z.literal('')),
+  email: z.string().email().optional(),
   memo: z.string().optional(),
 })

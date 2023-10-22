@@ -53,13 +53,13 @@ export default function PersonEditInner(props: Props) {
   const form = useForm<z.infer<typeof PersonFormSchema>>({
     resolver: zodResolver(PersonFormSchema),
     defaultValues: {
-      company_id: props.person?.company_id || '',
-      name: props.person?.name || '',
-      department: props.person?.department || '',
-      position: props.person?.position || '',
-      email: props.person?.email || '',
-      tell: props.person?.tell || '',
-      memo: props.person?.memo || '',
+      company_id: props.person?.company_id?.toString(),
+      name: props.person?.name?.toString(),
+      department: props.person?.department?.toString(),
+      position: props.person?.position?.toString(),
+      email: props.person?.email?.toString(),
+      tell: props.person?.tell?.toString(),
+      memo: props.person?.memo?.toString(),
     },
   })
 
