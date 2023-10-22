@@ -77,8 +77,8 @@ export default function CompanyEditInner(props: Props) {
     }).then((res) => {
       if (!res.data) return
       toast({
-        title: 'Company created successfully 🎉',
-        description: `Company ${res.data.updateCompany?.name} has been created successfully!`,
+        title: 'Company edited successfully 🎉',
+        description: `Company ${res.data.updateCompany?.name} has been edited successfully!`,
       })
       props.setIsOpen(false)
     })
