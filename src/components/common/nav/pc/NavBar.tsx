@@ -37,7 +37,7 @@ const PcNavBar = () => {
         {isMini ? (
           <div className="mx-auto grid place-items-center">
             <Image
-              src="https://raw.githubusercontent.com/R1013-T/giftjob-frontend/fe5d2e1f7c3ddb0234ba345d102e012619b342f7/public/giftjob_Icon.svg"
+              src="/giftjob_icon.png"
               alt="giftjob"
               width={40}
               height={40}
@@ -46,7 +46,7 @@ const PcNavBar = () => {
         ) : (
           <div className="flex justify-between items-end mx-3">
             <Image
-              src="https://raw.githubusercontent.com/R1013-T/giftjob-frontend/fe5d2e1f7c3ddb0234ba345d102e012619b342f7/public/giftjob_logo.svg"
+              src="/giftjob_logo.png"
               alt="giftjob"
               width={140}
               height={40}
