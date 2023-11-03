@@ -1,4 +1,3 @@
-import ViewController from '@/components/common/controller/ViewController'
 import CompanyModal from '@/components/main/company/modal/CompanyModal'
 
 export default function CompanyLayout({
