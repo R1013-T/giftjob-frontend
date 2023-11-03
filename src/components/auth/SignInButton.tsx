@@ -25,7 +25,7 @@ const OAuthButton = (props: OAuthButtonProps) => {
       className="w-full relative mx-auto mt-3 px-3 bg-card text-character border h-12 rounded-md flex justify-between hover:bg-card hover:border-primary"
       onClick={() => signIn(props.provider, { callbackUrl: '/main' })}
     >
-      <Image src={`/OAuth/${props.name}.png`} alt="" width={25} height={25} />
+      <Image src={`/OAuth/${props.provider}.png`} alt="" width={25} height={25} />
       <p>
         Continue with <span className="text-title font-bold">{props.name}</span>
       </p>
