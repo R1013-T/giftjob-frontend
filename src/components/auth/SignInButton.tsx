@@ -25,16 +25,11 @@ const OAuthButton = (props: OAuthButtonProps) => {
       className="w-full relative mx-auto mt-3 px-3 bg-card text-character border h-12 rounded-md flex justify-between hover:bg-card hover:border-primary"
       onClick={() => signIn(props.provider, { callbackUrl: '/main' })}
     >
-      <Image
-        src={`/OAuth/${props.provider}.png`}
-        alt=""
-        width={25}
-        height={25}
-      />
+      <Image src={`/OAuth/${props.name}.png`} alt="" width={25} height={25} />
       <p>
         Continue with <span className="text-title font-bold">{props.name}</span>
       </p>
-      <ArrowRightIcon className="h-6 w-6" />
+      <ArrowRightIcon className="h-5 w-5" />
     </Button>
   )
 }
@@ -51,7 +46,8 @@ export default function SignInButton() {
             <p className="mb-1 ml-2 text-center">Get started to GiftJob</p>
           </DialogTitle>
           <DialogDescription>
-            <OAuthButton provider={'microsoft'} name={'Microsoft'} />
+            {/* <OAuthButton provider={'azure-ad-b2c'} name={'Microsoft'} /> */}
+            <OAuthButton provider={'azure-ad'} name={'Microsoft'} />
             <OAuthButton provider={'google'} name={'Google'} />
             <OAuthButton provider={'github'} name={'GitHub'} />
           </DialogDescription>

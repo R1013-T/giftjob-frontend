@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import type { NextAuthOptions } from 'next-auth'
+import AzureADProvider from 'next-auth/providers/azure-ad'
 import GitHubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 
@@ -16,6 +17,11 @@ export const options: NextAuthOptions = {
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    }),
+    AzureADProvider({
+      tenantId: process.env.AZURE_AD_B2C_TENANT_NAME,
+      clientId: process.env.AZURE_AD_B2C_CLIENT_ID!,
+      clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET!,
     }),
   ],
   pages: {
@@ -36,7 +42,7 @@ export const options: NextAuthOptions = {
             uid: profile.sub || user.id,
             name: user.name,
             email: user.email,
-            image: user.image,
+            image: user.image || '',
           },
         }
         const res = await fetch(process.env.BACKEND_URL!, {
@@ -51,7 +57,6 @@ export const options: NextAuthOptions = {
           }),
         })
         const data = await res.json()
-        console.log('sign in mutation result: ', data)
 
         token.user = data.data.signIn
       }
@@ -59,8 +64,6 @@ export const options: NextAuthOptions = {
       return token
     },
     session: ({ session, token }) => {
-      console.log('session call back session: ', session)
-      console.log('session call back token: ', token)
       return {
         ...session,
         customJwtToken: token.customJwtToken,
