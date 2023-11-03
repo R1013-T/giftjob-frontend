@@ -25,6 +25,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
+        notFound: 'url("/404.png")',
         entrySheet: 'url("/sectionHero/entrySheet.png")',
         selfAnalytics: 'url("/sectionHero/selfAnalytics.png")',
         mockInterview: 'url("/sectionHero/mockInterview.png")',
