@@ -7,10 +7,10 @@ export default function DashboardAiSelfAnalysis() {
     <section className="border relative rounded-md flex flex-wrap items-center justify-center gap-2 h-64 lg:h-auto bg-selfAnalytics bg-center bg-no-repeat bg-cover">
       <div className="w-full px-5 text-center text-character font-medium">
         <p className="text-4xl font-bold text-title mb-2">AI Self Analytics</p>
-        <p>
+        {/* <p>
           Uncover your professional potential with AI: insightful self-analysis
           for strategic career planning.
-        </p>
+        </p> */}
       </div>
       <Link
         href="/main/ai/mock-interview"

@@ -7,10 +7,10 @@ export default function DashboardAiEntrySheetReview() {
         <p className="text-4xl font-bold text-title mb-2">
           AI Entry Sheet Review
         </p>
-        <p>
+        {/* <p>
           Transform your entry sheet with AI precision: impeccable grammar,
           impactful phrasing, and alignment with your career aspirations.
-        </p>
+        </p> */}
       </div>
       <Link
         href="/main/ai/entry-sheet"
