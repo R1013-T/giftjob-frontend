@@ -7,7 +7,7 @@ export default function ComingSoon() {
 
   return (
     <div
-      className="absolute top-0 right-0 z-30 opacity-80 bg-gray-400 w-full h-full flex flex-col items-center gap-3 justify-center p-5 text-center text-background"
+      className="absolute top-0 right-0 z-30 bg-gray-400/70 w-full h-full flex flex-col items-center gap-3 justify-center p-5 text-center text-background"
       onClick={() =>
         toast({
           title: 'Coming Soon!',

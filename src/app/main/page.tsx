@@ -9,8 +9,8 @@ export default function Main() {
       <DashboardCalendar />
       <div className="lg:h-DashboardContent lg:grid lg:grid-rows-2">
         <div className="lg:grid lg:grid-cols-2">
-          <DashboardAiSelfAnalysis />
           <DashboardAiEntrySheetReview />
+          <DashboardAiSelfAnalysis />
         </div>
         <DashboardAiMockInterview />
       </div>

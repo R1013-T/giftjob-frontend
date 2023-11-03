@@ -9,6 +9,13 @@ export default function MobileDetailHeader(props: Props) {
   const pathname = usePathname()
   const router = useRouter()
 
+  let backPath = ''
+  if (pathname.split('/')[2] === 'ai' || pathname.split('/').length === 2) {
+    backPath = '/main'
+  } else {
+    backPath = `/main/${pathname.split('/')[2]}`
+  }
+
   return (
     <div className="h-12 text-character flex justify-start items-center text-base">
       {pathname !== '/main' && (
@@ -17,10 +24,7 @@ export default function MobileDetailHeader(props: Props) {
           onClick={() => router.push('/main')}
         />
       )}
-      <p
-        className="ml-2 font-medium"
-        onClick={() => router.push(`/main/${pathname.split('/')[2]}`)}
-      >
+      <p className="ml-2 font-medium" onClick={() => router.push(backPath)}>
         {props.headerTitle}
       </p>
     </div>

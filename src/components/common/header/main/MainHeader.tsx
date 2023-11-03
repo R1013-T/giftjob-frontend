@@ -24,6 +24,18 @@ export default function MainHeader() {
     } else {
       headerTitle = `${sessionUser?.name}’s Dashboard`
     }
+  } else if (pathname.split('/')[2] === 'ai') {
+    switch (pathname.split('/')[3]) {
+      case 'entry-sheet':
+        headerTitle = 'AI Entry Sheet Review'
+        break
+      case 'mock-interview':
+        headerTitle = 'AI Mock Interview'
+        break
+      case 'self-analysis':
+        headerTitle = 'AI Self Analysis'
+        break
+    }
   } else {
     headerTitle = capitalizeCurrentPage.split('/')[0]
   }

@@ -38,7 +38,9 @@ export default function SignInButton() {
       >
         {loading && (
           <div className="bg-gray-500/90 absolute top-0 left-0 z-50 w-full h-full rounded-md grid place-items-center">
-            {currentProvider === props.provider && <LoaderIcon className='animate-spin text-white' />}
+            {currentProvider === props.provider && (
+              <LoaderIcon className="animate-spin text-white" />
+            )}
           </div>
         )}
         <Image

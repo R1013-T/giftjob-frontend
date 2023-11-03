@@ -24,6 +24,11 @@ module.exports = {
       200: '200px',
     },
     extend: {
+      backgroundImage: {
+        entrySheet: 'url("/sectionHero/entrySheet.png")',
+        selfAnalytics: 'url("/sectionHero/selfAnalytics.png")',
+        mockInterview: 'url("/sectionHero/mockInterview.png")',
+      },
       height: {
         dvh: '100dvh',
         70: '70dvh',
