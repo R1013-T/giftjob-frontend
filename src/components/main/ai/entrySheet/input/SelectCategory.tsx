@@ -61,7 +61,10 @@ export default function SelectCategory(props: Props) {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="self promotion">
+                    <SelectItem value="当社を志望する理由を教えてください。">
+                      Reason for applying
+                    </SelectItem>
+                    <SelectItem value="自己PRをしてください">
                       Self Promotion
                     </SelectItem>
                   </SelectContent>

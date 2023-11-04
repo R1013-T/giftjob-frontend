@@ -25,18 +25,21 @@ export default function InputDialog(props: Props) {
   const [dialogState, setDialogState] = React.useState('selectCategory')
 
   const [category, setCategory] = useState('')
-  const [content, setContent] = useState('')
 
-  useEffect(() => {
-    if (!category || !content) return
+  function handleSetUserInput(content: string) {
+    console.log('category', category)
+    console.log('content', content)
 
     props.setUserInput({
       category,
       content,
     })
 
+    setDialogState('selectCategory')
+    setCategory('')
+
     props.setIsOpen(false)
-  }, [content])
+  }
 
   return (
     <AlertDialog open={props.isOpen} onOpenChange={props.setIsOpen}>
@@ -52,8 +55,9 @@ export default function InputDialog(props: Props) {
             )}
             {dialogState === 'inputUserContent' && (
               <InputUserContent
+                handleSetUserInput={handleSetUserInput}
                 setDialogState={setDialogState}
-                setContent={setContent}
+                category={category}
               />
             )}
           </AlertDialogDescription>

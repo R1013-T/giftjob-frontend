@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 
 import InputDialog from '@/components/main/ai/entrySheet/input/InputDialog'
+import OpenAIEntrySheet from '@/components/main/ai/entrySheet/OpenAI'
+import ReGenerateButton from '@/components/main/ai/entrySheet/ReGenerateButton'
 
 export default function EntrySheet() {
   const [isOpen, setIsOpen] = useState(true)
@@ -11,19 +13,21 @@ export default function EntrySheet() {
     category: '',
     content: '',
   })
-  const [result, setResult] = useState('')
-
-  useEffect(() => {
-    console.log('entrySheet')
-  })
 
   return (
     <div>
-      <div>
-        <p>category: {userInput.category}</p>
-        <p>content : {userInput.content}</p>
-        <p></p>
-      </div>
+      <ReGenerateButton
+        onClick={() => {
+          setIsOpen(true)
+          setUserInput({
+            category: '',
+            content: '',
+          })
+        }}
+      />
+      {userInput.category && userInput.content && (
+        <OpenAIEntrySheet userInput={userInput} />
+      )}
       <InputDialog
         isOpen={isOpen}
         setIsOpen={setIsOpen}
