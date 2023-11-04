@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import { LoaderIcon } from 'lucide-react'
 import Image from 'next/image'
 import { signIn } from 'next-auth/react'
@@ -28,7 +29,9 @@ export default function SignInButton() {
   const OAuthButton = (props: OAuthButtonProps) => {
     return (
       <Button
-        className="w-full relative mx-auto mt-3 px-3 bg-card text-character border h-12 rounded-md flex justify-between hover:bg-card hover:border-primary"
+        className={`w-full relative mx-auto mt-3 px-3 bg-card text-character border h-12 rounded-md flex justify-between hover:bg-card hover:border-primary ${
+          loading && 'cursor-not-allowed hover: border-none'
+        }`}
         onClick={() => {
           if (loading) return
           setLoading(true)
@@ -61,8 +64,9 @@ export default function SignInButton() {
   return (
     <div>
       <Dialog>
-        <DialogTrigger className="bg-primary text-white px-3 py-2 tracking-wide rounded-md text-sm">
-          Get Started
+        <DialogTrigger className="bg-primary text-white px-3 py-2 pl-4 tracking-wide rounded-md text-base flex justify-center items-center gap-1.5">
+          <p>Get Started</p>
+          <ArrowRightCircleIcon className="w-6 h-6" />
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

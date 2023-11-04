@@ -1,3 +1,4 @@
+import { SparklesIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 
 export default function DashboardAiEntrySheetReview() {
@@ -14,9 +15,9 @@ export default function DashboardAiEntrySheetReview() {
       </div>
       <Link
         href="/main/ai/entry-sheet"
-        className="text-lg font-medium bg-primary px-3.5 py-2 rounded-md text-white tracking-widest"
+        className="text-lg font-medium bg-primary px-3.5 py-2 rounded-md text-white tracking-widest flex items-center justify-center gap-1.5"
       >
-        Start Now
+        <SparklesIcon className="w-5 h-5" /> Start Now
       </Link>
     </section>
   )
