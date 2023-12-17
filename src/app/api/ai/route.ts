@@ -8,8 +8,6 @@ export async function POST(request: Request) {
     })
   }
 
-  console.log('message', message)
-
   const url = new URL(process.env.AI_ENDPOINT!)
   url.searchParams.append('message', message)
 
