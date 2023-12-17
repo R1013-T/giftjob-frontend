@@ -13,7 +13,7 @@ export default function Test() {
 
           console.log(message)
 
-          const res = await fetch(`/api/ai?message=${message}`, {
+          const res = await fetch(`https://giftjob-ai.greenbush-5c01ff3b.japaneast.azurecontainerapps.io/ai?message=${message}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
