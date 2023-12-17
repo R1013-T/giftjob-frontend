@@ -25,36 +25,38 @@ export default function OpenAIEntrySheet(props: Props) {
   })
 
   const handleOpenAI = async () => {
-    setLoading(true)
+    // setLoading(true)
 
-    const endpoint = process.env.NEXT_PUBLIC_AZURE_OPENAI_ENDPOINT!
-    const apiKey = process.env.NEXT_PUBLIC_AZURE_OPENAI_API_KEY!
+    // const endpoint = process.env.NEXT_PUBLIC_AZURE_OPENAI_ENDPOINT!
+    // const apiKey = process.env.NEXT_PUBLIC_AZURE_OPENAI_API_KEY!
 
-    const client = new OpenAIClient(endpoint, new AzureKeyCredential(apiKey))
+    // const client = new OpenAIClient(endpoint, new AzureKeyCredential(apiKey))
 
-    const messages = [
-      { role: 'system', content: EntrySheetPrompt() },
-      {
-        role: 'user',
-        content: `エントリーシートの質問「${category}」、ユーザーの回答「${content}」`,
-      },
-    ]
+    // const messages = [
+    //   { role: 'system', content: EntrySheetPrompt() },
+    //   {
+    //     role: 'user',
+    //     content: `エントリーシートの質問「${category}」、ユーザーの回答「${content}」`,
+    //   },
+    // ]
 
-    const deploymentId = process.env.NEXT_PUBLIC_AZURE_OPENAI_DEPLOYMENT_NAME!
+    // const deploymentId = process.env.NEXT_PUBLIC_AZURE_OPENAI_DEPLOYMENT_NAME!
 
-    setResultMessage('')
+    // setResultMessage('')
 
-    await client
-      .getChatCompletions(deploymentId, messages)
-      .then((result) => {
-        for (const choice of result.choices) {
-          setResultMessage(choice.message?.content || '')
-        }
-        setLoading(false)
-      })
-      .catch((err) => {
-        // TODO
-      })
+    // await client
+    //   .getChatCompletions(deploymentId, messages)
+    //   .then((result) => {
+    //     for (const choice of result.choices) {
+    //       setResultMessage(choice.message?.content || '')
+    //     }
+    //     setLoading(false)
+    //   })
+    //   .catch((err) => {
+    //     // TODO
+    //   })
+
+    alert('This feature is not available yet.')
   }
 
   return (
