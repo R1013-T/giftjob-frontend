@@ -14,12 +14,15 @@ export default function Test() {
         onClick={async () => {
           console.log('==== START ====')
 
-          const res = await fetch(`${process.env.NEXT_PUBLIC_AI_ENDPOINT}?question=${question}&content=${content}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_AI_ENDPOINT}?question=${question}&content=${content}`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          )
 
           const data = await res.json()
           console.log(data)

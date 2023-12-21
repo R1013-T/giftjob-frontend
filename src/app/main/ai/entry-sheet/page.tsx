@@ -2,38 +2,51 @@
 
 import { useEffect, useState } from 'react'
 
-import InputDialog from '@/components/main/ai/entrySheet/input/InputDialog'
-import OpenAIEntrySheet from '@/components/main/ai/entrySheet/OpenAI'
-import ReGenerateButton from '@/components/main/ai/entrySheet/ReGenerateButton'
+import EntrySheetInput from '@/components/main/ai/entry-sheet/input'
+import Loading from '@/components/main/ai/entry-sheet/loading'
+import EntrySheetResult from '@/components/main/ai/entry-sheet/result'
 
 export default function EntrySheet() {
-  const [isOpen, setIsOpen] = useState(true)
-
-  const [userInput, setUserInput] = useState({
-    category: '',
+  const [entrySheetState, setEntrySheetState] = useState('input')
+  const [inputData, setInputData] = useState({
+    question: '',
     content: '',
   })
+  const [returnData, setReturnData] = useState({
+    result: '',
+    advice: '',
+    score: 0,
+  })
+
+  useEffect(() => {
+    console.log('inputData', inputData)
+    console.log('entrySheetState', entrySheetState)
+  }, [inputData, entrySheetState])
 
   return (
-    <div>
-      <ReGenerateButton
-        onClick={() => {
-          setIsOpen(true)
-          setUserInput({
-            category: '',
-            content: '',
-          })
-        }}
-      />
-      {userInput.category && userInput.content && (
-        <OpenAIEntrySheet userInput={userInput} />
+    <div className="h-full w-full relative overflow-y-auto">
+      {entrySheetState === 'input' && (
+        <EntrySheetInput
+          setEntrySheetState={setEntrySheetState}
+          inputData={inputData}
+          setInputData={setInputData}
+        />
       )}
-      <InputDialog
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        userInput={userInput}
-        setUserInput={setUserInput}
-      />
+      {entrySheetState === 'loading' && (
+        <Loading
+          entrySheetState={entrySheetState}
+          setEntrySheetState={setEntrySheetState}
+          inputData={inputData}
+          setReturnData={setReturnData}
+        />
+      )}
+      {entrySheetState === 'result' && (
+        <EntrySheetResult
+          setEntrySheetState={setEntrySheetState}
+          inputData={inputData}
+          returnData={returnData}
+        />
+      )}
     </div>
   )
 }

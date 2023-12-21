@@ -45,7 +45,9 @@ const UserCard = (props: Props) => {
         <>
           <Avatar>
             <AvatarImage src={sessionUser?.image} className="bg-card" />
-            <AvatarFallback className="bg-primary" />
+            <AvatarFallback className="bg-card">
+              {sessionUser?.name[0]}
+            </AvatarFallback>
           </Avatar>
           <div className="ml-2 w-full text-left">
             <p className="text-base text-title">{sessionUser?.name}</p>

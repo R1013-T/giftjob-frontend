@@ -8,6 +8,7 @@ export default async function Home() {
     <main>
       <Header />
       <div className="grid place-items-center h-dvh">
+        <h2 className="text-2xl font-bold tracking-widest">AI就活管理アプリ</h2>
         <SignInButton />
 
         <Test />
