@@ -46,7 +46,7 @@ export default function EntrySheetInput({
   }
 
   return (
-    <div className="h-full p-2">
+    <div className="h-full p-2 text-base">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
