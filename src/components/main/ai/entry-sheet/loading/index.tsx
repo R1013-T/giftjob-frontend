@@ -45,10 +45,11 @@ export default function Loading({
       console.log('data', data)
 
       setReturnData({
-        result: data.result,
-        advice: data.advice,
-        score: data.score,
+        result: data.content.result,
+        advice: data.content.advice,
+        score: data.content.score,
       })
+      setEntrySheetState('result')
     } catch (error) {
       console.log('error', error)
       setError('Error occurred. Please try again.')
