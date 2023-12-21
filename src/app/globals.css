@@ -158,3 +158,6 @@ body {
 .ai-result span {
   color: var(--primary);
 }
+.ai-result em {
+  color: var(--primary);
+}
