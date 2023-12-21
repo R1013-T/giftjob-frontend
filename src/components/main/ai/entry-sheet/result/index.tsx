@@ -34,7 +34,7 @@ export default function EntrySheetResult({
           <AccordionTrigger className="text-sm text-character font-normal">
             Question
           </AccordionTrigger>
-          <AccordionContent className="max-h-[30dvh] overflow-y-auto">
+          <AccordionContent>
             <p className="py-1 px-2 rounded-md border text-base">
               {inputData.question}
             </p>
@@ -60,7 +60,7 @@ export default function EntrySheetResult({
           <AccordionTrigger className="text-sm text-character font-normal">
             Your Input
           </AccordionTrigger>
-          <AccordionContent className="max-h-[40vh] overflow-y-auto">
+          <AccordionContent>
             <p className="py-1 px-2 rounded-md border text-base">
               {inputData.content}
             </p>

@@ -43,7 +43,7 @@ export default function Loading({
   return (
     <div className="h-full w-full flex flex-col gap-10 justify-center items-center">
       <div
-        className={`w-24 aspect-square text-center rounded-full blur-[1px] transition-all ${
+        className={`h-24 aspect-square text-center rounded-full blur-[1px] transition-all ${
           error ? 'loader-error' : 'loader'
         }`}
       >
