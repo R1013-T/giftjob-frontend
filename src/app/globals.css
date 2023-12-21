@@ -156,8 +156,8 @@ body {
 }
 
 .ai-result span {
-  color: var(--primary);
+  color: hsl(var(--primary));
 }
 .ai-result em {
-  color: var(--primary);
+  color: hsl(var(--primary));
 }

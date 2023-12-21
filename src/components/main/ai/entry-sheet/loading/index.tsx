@@ -87,8 +87,8 @@ export default function Loading({
             </Button>
             <Button
               className="flex gap-1.5 items-center whitespace-nowrap"
-              onClick={() => {
-                console.log('Regenerate')
+              onClick={async () => {
+                fetchEntrySheet()
               }}
             >
               <ArrowPathIcon className="w-4 h-4" /> Regenerate
