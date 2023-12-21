@@ -30,14 +30,29 @@ export default function Loading({
   }, [])
 
   async function fetchEntrySheet() {
-    setTimeout(() => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_AI_ENDPOINT}?question=${inputData.question}&content=${inputData.content}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      const data = await res.json()
+
+      console.log('data', data)
+
       setReturnData({
-        result: 'Test AI Result',
-        advice: 'Test AI Advice',
-        score: 10,
+        result: data.result,
+        advice: data.advice,
+        score: data.score,
       })
-      setEntrySheetState('result')
-    }, 10000)
+    } catch (error) {
+      console.log('error', error)
+      setError('Error occurred. Please try again.')
+    }
   }
 
   return (
