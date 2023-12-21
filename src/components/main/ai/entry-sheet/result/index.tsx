@@ -72,9 +72,8 @@ export default function EntrySheetResult({
           </AccordionTrigger>
           <AccordionContent className="">
             <div className="max-h-[40vh] overflow-y-auto">
-              <p className="py-1 px-2 rounded-md border text-base">
-                {inputData.content}
-                {/* {returnData.result} */}
+              <p className="py-1 px-2 rounded-md border text-base ai-result">
+                {returnData.result}
               </p>
             </div>
           </AccordionContent>
