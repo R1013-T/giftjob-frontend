@@ -161,3 +161,15 @@ body {
 .ai-result em {
   color: hsl(var(--primary));
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: #ededed30;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #edededdd;
+  border-radius: 10px;
+}

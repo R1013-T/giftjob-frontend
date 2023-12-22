@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowPathIcon, PencilIcon } from '@heroicons/react/24/outline'
+import { ProgressCircle } from '@tremor/react'
 import parse from 'html-react-parser'
 
 import {
@@ -46,9 +47,17 @@ export default function EntrySheetResult({
             Score
           </AccordionTrigger>
           <AccordionContent>
-            <div className="flex gap-2 w-full">
-              <div className="bg-red-200 h-36 aspect-square flex justify-center items-center">
-                {returnData.score}
+            <div className="flex gap-2 w-full flex-col lg:flex-row">
+              <div className="h-36 aspect-square flex justify-center items-center relative">
+                <ProgressCircle
+                  value={returnData.score}
+                  radius={50}
+                  strokeWidth={7}
+                >
+                  <p className="text-2xl text-character font-semibold">
+                    {returnData.score}
+                  </p>
+                </ProgressCircle>
               </div>
               <div className="w-full h-36 overflow-y-auto">
                 <p className="text-primary">AI Advice</p>

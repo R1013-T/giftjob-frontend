@@ -32,7 +32,7 @@ export default function Loading({
   async function fetchEntrySheet() {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_AI_ENDPOINT}?question=${inputData.question}&content=${inputData.content}`,
+        `${process.env.NEXT_PUBLIC_AI_ENDPOINT}/entry-sheet?question=${inputData.question}&content=${inputData.content}`,
         {
           method: 'POST',
           headers: {
