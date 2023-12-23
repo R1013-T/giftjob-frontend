@@ -12,10 +12,11 @@ export default function UserInput({
   const [currentMessage, setCurrentMessage] = useState('')
 
   return (
-    <div className="absolute bottom-20 lg:bottom-3 right-3 left-3 p-1 bg-card border-2 rounded-md text-title flex items-end">
+    <div className="absolute bottom-3 right-3 left-3 p-1 bg-card border-2 rounded-md text-title flex items-end">
       <Textarea
         className="border-none min-h-0 bg-card focus-visible:ring-0 focus-visible:ring-offset-0 text-base resize-none"
         rows={1}
+        autoFocus={true}
         onInput={(e) => {
           e.currentTarget.style.height = 'auto'
           e.currentTarget.style.height = e.currentTarget.scrollHeight + 'px'

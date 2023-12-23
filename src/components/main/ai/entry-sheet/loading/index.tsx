@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 
 export default function Loading({
-  entrySheetState,
   setEntrySheetState,
   inputData,
   setReturnData,
@@ -41,8 +40,6 @@ export default function Loading({
         }
       )
       const data = await res.json()
-
-      console.log('data', data)
 
       setReturnData({
         result: data.content.result,

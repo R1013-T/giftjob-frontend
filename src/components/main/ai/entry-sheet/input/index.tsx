@@ -39,8 +39,6 @@ export default function EntrySheetInput({
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log('values', values)
-
     setInputData(values)
     setEntrySheetState('loading')
   }

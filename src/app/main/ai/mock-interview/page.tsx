@@ -1,12 +1,15 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 import FirstSettings from '@/components/main/ai/mock-interview/first-settings'
 import Assistant from '@/components/main/ai/mock-interview/message-block/assistant'
+import Finish from '@/components/main/ai/mock-interview/message-block/finish'
 import Info from '@/components/main/ai/mock-interview/message-block/info'
 import UserInput from '@/components/main/ai/mock-interview/message-block/input'
 import { User } from '@/components/main/ai/mock-interview/message-block/user'
+import { Button } from '@/components/ui/button'
 
 type Message = {
   role: 'user' | 'assistant' | 'system'
@@ -15,6 +18,8 @@ type Message = {
 }
 
 export default function MockInterview() {
+  const router = useRouter()
+
   const [firstSettings, setFirstSettings] = useState({
     occupation: '',
     times: 0,
@@ -63,8 +68,6 @@ export default function MockInterview() {
           content: data.content.res.question || '質問を生成出来ませんでした。',
         },
       ])
-
-      console.log('data', data)
     } catch (error) {
       console.log('error', error)
     }
@@ -72,23 +75,10 @@ export default function MockInterview() {
     setLoading('')
   }
 
-  function test() {
-    console.log('test')
-    console.log('firstSettings', firstSettings)
-    console.log('messages', messages)
-    console.log('advice', advice)
-    console.log('score', score)
-
-    console.log('questionCount', questionCount)
-  }
-
   async function fetchMockInterview(currentMessage: string) {
     let isLast = false
     let isEnd = false
     let count = questionCount
-
-    console.log('questionCount', questionCount)
-    console.log('count', count)
 
     setMessages([
       ...messages,
@@ -97,20 +87,14 @@ export default function MockInterview() {
         content: currentMessage,
       },
     ])
-    setLoading('質問を生成中です。')
 
     if (count + 1 === firstSettings.times) {
-      console.log('last')
       isLast = true
     } else if (count >= firstSettings.times) {
-      console.log('end')
       isEnd = true
-    } else {
-      console.log('continue')
-      console.log('questionCount', questionCount)
-      console.log('count', count)
-      console.log('firstSettings.times', firstSettings.times)
     }
+
+    setLoading(isEnd ? '面接の結果を採点中です。' : '質問を生成中です。')
 
     try {
       const res = await fetch(
@@ -166,8 +150,6 @@ export default function MockInterview() {
       }
 
       setMessages([...messages, ...newMessages])
-
-      console.log('data', data)
     } catch (error) {
       console.log('error', error)
     }
@@ -179,15 +161,6 @@ export default function MockInterview() {
         setFirstSettings={setFirstSettings}
         handleStart={handleStart}
       />
-
-      <div
-        className=""
-        onClick={() => {
-          test()
-        }}
-      >
-        test
-      </div>
 
       <div className="h-full w-full overflow-y-auto text-character pb-44 text-sm px-1 flex flex-col gap-2">
         {firstSettings.occupation && (
@@ -206,10 +179,21 @@ export default function MockInterview() {
           }
         })}
         {loading && <Info text={loading} icon="loading" />}
-        <div className="border border-red-400">
-          <p>score: {score}</p>
-          <p>advice: {advice}</p>
-        </div>
+        {finished && (
+          <>
+            <Finish advice={advice} score={score} />
+            <div className="mt-2 text-center">
+              <Button
+                className="w-full lg:w-auto"
+                onClick={() => {
+                  router.push('/main')
+                }}
+              >
+                終了
+              </Button>
+            </div>
+          </>
+        )}
       </div>
 
       {loading || finished ? (
