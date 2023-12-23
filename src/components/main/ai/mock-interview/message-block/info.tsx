@@ -1,5 +1,4 @@
-import { CheckIcon } from '@heroicons/react/24/outline'
-import { InformationCircleIcon } from '@heroicons/react/24/solid'
+import { CheckIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { Loader } from 'tabler-icons-react'
 
 export default function Info({ text, icon }: { text: string; icon: string }) {

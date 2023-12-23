@@ -11,11 +11,11 @@ export function User({ text }: { text: string }) {
     <div className="p-2 flex gap-3 mt-2">
       <Avatar className="h-8 w-8">
         <AvatarImage src={sessionUser?.image} className="bg-card" />
-        <AvatarFallback className="bg-primary text-white">
+        <AvatarFallback className="bg-card text-white">
           {sessionUser?.name[0]}
         </AvatarFallback>
       </Avatar>
-      <p>{text}</p>
+      <p className='mt-1' >{text}</p>
     </div>
   )
 }

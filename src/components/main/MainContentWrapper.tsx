@@ -4,7 +4,7 @@ export default function MainContentWrapper({
   children: React.ReactNode
 }) {
   return (
-    <article className="p-3 relative h-MainContent overflow-y-auto pb-24 lg:pb-3">
+    <article className="p-3 relative h-MainContent pb-24 lg:pb-3">
       {children}
     </article>
   )
