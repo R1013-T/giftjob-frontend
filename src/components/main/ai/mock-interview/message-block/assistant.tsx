@@ -8,7 +8,7 @@ export default function Assistant({ text }: { text: string }) {
       <Avatar className="h-7 w-7">
         <AvatarImage src="/openai.svg" alt="assistant" />
       </Avatar>
-      <p className='mt-0.5' >{text}</p>
+      <p className="mt-0.5">{text}</p>
     </div>
   )
 }

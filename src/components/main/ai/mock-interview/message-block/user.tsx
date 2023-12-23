@@ -15,7 +15,7 @@ export function User({ text }: { text: string }) {
           {sessionUser?.name[0]}
         </AvatarFallback>
       </Avatar>
-      <p className='mt-1' >{text}</p>
+      <p className="mt-1">{text}</p>
     </div>
   )
 }
